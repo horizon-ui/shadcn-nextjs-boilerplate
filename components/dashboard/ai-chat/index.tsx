@@ -162,36 +162,36 @@ export default function Chat(props: Props) {
       description="AI Generator"
     >
       <div className="relative flex w-full flex-col pt-[20px] md:pt-0">
-        <div className="absolute left-[20%] top-[43%] z-[0] w-[200px] translate-y-[-50%] md:left-[35%] md:top-[50%] lg:left-[38%] xl:left-[38%] xl:w-[350px] ">
+        <div className="absolute left-[50%] top-[50%] z-[0] mt-[100px] flex w-[200px] -translate-x-[50%] items-center justify-center md:mt-[120px] xl:mt-[200px] xl:w-[350px] ">
           <Image
             width="340"
             height="181"
-            src={`${process.env.NEXT_PUBLIC_SITE_URL}${
-              theme === 'dark' ? Bgdark.src : Bg.src
-            }`}
+            src={`${theme === 'dark' ? Bgdark.src : Bg.src}`}
             className="absolute z-[0] w-[200px] translate-y-[-50%] xl:w-[350px] "
             alt=""
           />
-          <div className="absolute z-[0] -ml-5 -mt-5 flex max-w-[250px] flex-col justify-end md:ml-0 md:min-w-[400px] md:flex-row">
-            <input
-              className="mb-2.5 mr-0 h-11 min-h-[34px] w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-400 md:mb-0 md:mr-2.5"
-              placeholder="Type your OpenAI Key here..."
-              onChange={handleInputApiKey}
-            />
-            <Button
-              className="mx-auto mt-auto flex h-full w-full items-center justify-center rounded-lg px-4 py-2.5 text-base font-medium md:w-[200px]"
-              onClick={handleApiKey}
+          <div className="relative z-[0] flex max-w-[250px] -translate-y-[100%] flex-col md:min-w-[400px] md:-translate-y-[150%]">
+            <div className="mb-4 flex flex-col md:flex-row">
+              <input
+                className="mb-2.5 mr-0 h-11 min-h-[34px] w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-400 md:mb-0 md:mr-2.5"
+                placeholder="Type your OpenAI Key here..."
+                onChange={handleInputApiKey}
+              />
+              <Button
+                className="mx-auto mt-auto flex h-full w-full items-center justify-center rounded-lg px-4 py-2.5 text-base font-medium md:w-[200px]"
+                onClick={handleApiKey}
+              >
+                Set API Key
+              </Button>
+            </div>
+            <a
+              className=" w-full text-center text-sm text-zinc-500 underline dark:text-zinc-400 md:left-6 md:top-8"
+              target="_blank"
+              href="https://platform.openai.com/account/api-keys"
             >
-              Set API Key
-            </Button>
+              Get your API key from Open AI Dashboard
+            </a>
           </div>
-          <a
-            className="absolute left-2 top-[6rem] w-full text-center text-sm text-zinc-500 underline dark:text-zinc-400 md:left-6 md:top-8"
-            target="_blank"
-            href="https://platform.openai.com/account/api-keys"
-          >
-            Get your API key from Open AI Dashboard
-          </a>
         </div>
         <div className="mx-auto flex min-h-[75vh] w-full max-w-[1000px] flex-col xl:min-h-[85vh]">
           {/* Model Change */}
@@ -200,7 +200,7 @@ export default function Chat(props: Props) {
               outputCode ? 'mb-5' : 'mb-auto'
             }`}
           >
-            <div className="z-[2] mx-auto mb-5 flex w-max rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800">
+            <div className="z-[0] mx-auto mb-5 flex w-max rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800">
               <div
                 className={`flex cursor-pointer items-center justify-center py-2 transition-all duration-75 ${
                   model === 'gpt-4-1106-preview'
