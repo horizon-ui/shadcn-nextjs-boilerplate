@@ -1,7 +1,5 @@
 const nextConfig = {
   reactStrictMode: false, // changed this to false
-  basePath: process.env.NEXT_PUBLIC_SITE_URL,
-  assetPrefix: process.env.NEXT_PUBLIC_SITE_URL,
   images: {
     domains: [
       'images.unsplash.com',
