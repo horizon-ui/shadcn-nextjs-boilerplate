@@ -172,7 +172,7 @@ export default function Chat(props: Props) {
             className="absolute z-[0] w-[200px] translate-y-[-50%] xl:w-[350px] "
             alt=""
           />
-          <div className="absolute z-[0] -mt-5 flex min-w-[400px] justify-end">
+          <div className="absolute z-[0] -mt-5 flex min-w-[400px] flex-col justify-end md:flex-row">
             <input
               className="mr-2.5 h-11 min-h-[34px] w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-400"
               placeholder="Type your OpenAI Key here..."
