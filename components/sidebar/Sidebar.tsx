@@ -13,9 +13,6 @@ import SidebarCard from '@/components/sidebar/components/SidebarCard';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card } from '@/components/ui/card';
 import { IRoute } from '@/types/types';
-import { Database } from '@/types/types_db';
-import { postData } from '@/utils/helpers';
-import { getStripe } from '@/utils/stripe-client';
 import { useRouter } from 'next/navigation';
 import React, { PropsWithChildren } from 'react';
 import { useState } from 'react';
@@ -28,12 +25,6 @@ export interface SidebarProps extends PropsWithChildren {
   routes: IRoute[];
   [x: string]: any;
 }
-interface SidebarLinksProps extends PropsWithChildren {
-  routes: IRoute[];
-  [x: string]: any;
-}
-
-type Price = Database['public']['Tables']['prices']['Row'];
 
 function Sidebar(props: SidebarProps) {
   const router = useRouter();
@@ -43,29 +34,6 @@ function Sidebar(props: SidebarProps) {
     product: 'prod_OXGZkl2lnZ9VId',
     price: 'price_1OAEhUDUwD2aqzMkbQUIFuiI',
   });
-  const [priceIdLoading, setPriceIdLoading] = useState<string>();
-  const handleCheckout = async (price: Price) => {
-    setPriceIdLoading(price.id);
-    if (!props.user) {
-      return router.push('/dashboard/signin');
-    }
-    if (props.subscription) {
-      return router.push('/dashboard/settings');
-    }
-    try {
-      const { sessionId } = await postData({
-        url: '/api/create-checkout-session',
-        data: { price },
-      });
-
-      const stripe = await getStripe();
-      stripe?.redirectToCheckout({ sessionId });
-    } catch (error) {
-      return alert((error as Error)?.message);
-    } finally {
-      setPriceIdLoading(undefined);
-    }
-  };
   // SIDEBAR
   return (
     <div
