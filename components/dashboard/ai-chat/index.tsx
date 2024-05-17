@@ -166,9 +166,7 @@ export default function Chat(props: Props) {
           <Image
             width="340"
             height="181"
-            src={`/shadcn-nextjs-boilerplate/${
-              theme === 'dark' ? Bgdark.src : Bg.src
-            }`}
+            src={`${theme === 'dark' ? Bgdark.src : Bg.src}`}
             className="absolute z-[0] w-[200px] translate-y-[-50%] xl:w-[350px] "
             alt=""
           />
@@ -219,9 +217,9 @@ export default function Chat(props: Props) {
                     ? 'bg-white dark:bg-zinc-950'
                     : 'transparent'
                 } h-[70xp] w-[174px]
-       ${
-         model === 'gpt-4o' ? '' : ''
-       } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
+                ${
+                  model === 'gpt-4o' ? '' : ''
+                } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
                 onClick={() => setModel('gpt-4o')}
               >
                 GPT-4o
