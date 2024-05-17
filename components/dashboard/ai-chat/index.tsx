@@ -162,29 +162,31 @@ export default function Chat(props: Props) {
       description="AI Generator"
     >
       <div className="relative flex w-full flex-col pt-[20px] md:pt-0">
-        <div className="absolute left-[20%] top-[50%] z-[0] w-[200px] translate-y-[-50%] md:left-[35%] lg:left-[38%] xl:left-[38%] xl:w-[350px] ">
+        <div className="absolute left-[20%] top-[43%] z-[0] w-[200px] translate-y-[-50%] md:left-[35%] md:top-[50%] lg:left-[38%] xl:left-[38%] xl:w-[350px] ">
           <Image
             width="340"
             height="181"
-            src={`${theme === 'dark' ? Bgdark.src : Bg.src}`}
+            src={`${process.env.NEXT_PUBLIC_SITE_URL}${
+              theme === 'dark' ? Bgdark.src : Bg.src
+            }`}
             className="absolute z-[0] w-[200px] translate-y-[-50%] xl:w-[350px] "
             alt=""
           />
           <div className="absolute z-[0] -ml-5 -mt-5 flex max-w-[250px] flex-col justify-end md:ml-0 md:min-w-[400px] md:flex-row">
             <input
-              className="mb-2.5 mr-2.5 h-11 min-h-[34px] w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-400 md:mb-0 md:mr-0"
+              className="mb-2.5 mr-0 h-11 min-h-[34px] w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-400 md:mb-0 md:mr-2.5"
               placeholder="Type your OpenAI Key here..."
               onChange={handleInputApiKey}
             />
             <Button
-              className="mt-auto flex h-full w-[200px] items-center justify-center rounded-lg px-4 py-2.5 text-base font-medium"
+              className="mx-auto mt-auto flex h-full w-full items-center justify-center rounded-lg px-4 py-2.5 text-base font-medium md:w-[200px]"
               onClick={handleApiKey}
             >
               Set API Key
             </Button>
           </div>
           <a
-            className="absolute left-6 top-8 w-full text-center text-sm text-zinc-500 underline dark:text-zinc-400"
+            className="absolute left-2 top-[6rem] w-full text-center text-sm text-zinc-500 underline dark:text-zinc-400 md:left-6 md:top-8"
             target="_blank"
             href="https://platform.openai.com/account/api-keys"
           >
