@@ -6,7 +6,9 @@
   "scripts": {
     "init": "npm install && npx shadcn-ui@latest add --all",
     "dev": "next dev",
+    "add": "npx shadcn-ui@latest add --all",
     "build": "next build",
+    "setup": "npm run add build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -58,6 +60,7 @@
     "@uiw/codemirror-theme-tokyo-night": "^4.19.11",
     "@uiw/react-codemirror": "^4.19.11",
     "adblock-detect-react": "^1.1.0",
+    "add": "^2.0.6",
     "apexcharts": "3.35.2",
     "axios": "^1.3.4",
     "babel-cli": "^6.26.0",
