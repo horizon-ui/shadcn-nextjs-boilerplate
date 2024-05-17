@@ -15,9 +15,9 @@ export default async function Account() {
     getSubscription(),
   ]);
 
-  // if (!session) {
-  //   return redirect('/dashboard/signin');
-  // }
+  if (!session) {
+    return redirect('/dashboard/signin');
+  }
 
   return (
     <Chat

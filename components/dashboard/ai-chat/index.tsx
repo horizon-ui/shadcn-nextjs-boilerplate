@@ -48,9 +48,7 @@ export default function Chat(props: Props) {
   // *** If you use .env.local variable for your API key, method which we recommend, use the apiKey variable commented below
   // Input States
   const [inputOnSubmit, setInputOnSubmit] = useState<string>('');
-  const [inputMessage, setInputMessage] = useState<string>('');
-  const [inputApiKey, setInputApiKey] = useState<string>('');
-  const [apiKey, setApiKey] = useState<string>('');
+  const [inputMessage, setInputMessage] = useState<string>(''); 
   // Response message
   const [outputCode, setOutputCode] = useState<string>('');
   // ChatGPT model
@@ -139,17 +137,7 @@ export default function Chat(props: Props) {
 
   const handleChange = (Event: any) => {
     setInputMessage(Event.target.value);
-  };
-  const handleInputApiKey = (Event: any) => {
-    setInputApiKey(Event.target.value);
-  };
-  const handleApiKey = (Event: any) => {
-    setApiKey(inputApiKey);
-    toast({
-      title: 'API Key was set!',
-      description: 'Succesfully set API key!',
-    });
-  };
+  }; 
 
   return (
     <DashboardLayout
@@ -169,27 +157,7 @@ export default function Chat(props: Props) {
             src={theme === 'dark' ? Bgdark.src : Bg.src}
             className="absolute z-[0] w-[200px] translate-y-[-50%] xl:w-[350px] "
             alt=""
-          />
-          <div className="absolute z-[0] -mt-5 flex min-w-[400px] justify-end">
-            <input
-              className="mr-2.5 h-11 min-h-[34px] w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-400"
-              placeholder="Type your OpenAI Key here..."
-              onChange={handleInputApiKey}
-            />
-            <Button
-              className="mt-auto flex h-full w-[200px] items-center justify-center rounded-lg px-4 py-2.5 text-base font-medium"
-              onClick={handleApiKey}
-            >
-              Set API Key
-            </Button>
-          </div>
-          <a
-            className="absolute left-6 top-8 w-full text-center text-sm text-zinc-500 underline dark:text-zinc-400"
-            target="_blank"
-            href="https://platform.openai.com/account/api-keys"
-          >
-            Get your API key from Open AI Dashboard
-          </a>
+          />  
         </div>
         <div className="mx-auto flex min-h-[75vh] w-full max-w-[1000px] flex-col xl:min-h-[85vh]">
           {/* Model Change */}
