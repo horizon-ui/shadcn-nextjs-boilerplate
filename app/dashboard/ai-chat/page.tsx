@@ -16,7 +16,7 @@ export default async function Account() {
   ]);
 
   // if (!session) {
-  //   return redirect('/dashboard/signin');
+  //   return redirect('https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/signin');
   // }
 
   return (

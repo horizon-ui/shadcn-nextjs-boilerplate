@@ -13,8 +13,12 @@ export default async function Account() {
   ]);
 
   if (!session) {
-    return redirect('/dashboard/signin');
+    return redirect(
+      'https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/signin',
+    );
   } else {
-    redirect('/dashboard/ai-chat');
+    redirect(
+      'https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/ai-chat',
+    );
   }
 }
