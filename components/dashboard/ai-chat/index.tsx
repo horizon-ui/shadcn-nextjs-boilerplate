@@ -166,7 +166,9 @@ export default function Chat(props: Props) {
           <Image
             width="340"
             height="181"
-            src={theme === 'dark' ? Bgdark.src : Bg.src}
+            src={`${process.env.NEXT_PUBLIC_SITE_URL}${
+              theme === 'dark' ? Bgdark.src : Bg.src
+            }`}
             className="absolute z-[0] w-[200px] translate-y-[-50%] xl:w-[350px] "
             alt=""
           />

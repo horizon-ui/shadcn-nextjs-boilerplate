@@ -20,7 +20,7 @@ export default function SidebarDocs() {
         width="54"
         height="30"
         className="w-[54px]"
-        src={SidebarImage.src}
+        src={`${process.env.NEXT_PUBLIC_SITE_URL}${SidebarImage.src}`}
         alt=""
       />
       <div className="mb-3 flex w-full flex-col pt-4">
