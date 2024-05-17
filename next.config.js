@@ -1,6 +1,7 @@
 const nextConfig = {
   reactStrictMode: false, // changed this to false
-  assetPrefix: process.env.NEXT_PUBLIC_SITE_URL,
+  assetPrefix: '/shadcn-nextjs-boilerplate',
+  // assetPrefix: process.env.NEXT_PUBLIC_SITE_URL,
   images: {
     domains: [
       'images.unsplash.com',
