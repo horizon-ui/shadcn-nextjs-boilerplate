@@ -45,7 +45,7 @@ interface Props {
 export default function Chat(props: Props) {
   const { toast } = useToast();
   const { theme, setTheme } = useTheme();
-  // *** If you use .env.local variable for your API key, method which we recommend, use the apiKey variable commented below
+  // *** If you use `.env.local` variable for your API key, method which we recommend, use the apiKey variable commented below
   // Input States
   const [inputOnSubmit, setInputOnSubmit] = useState<string>('');
   const [inputMessage, setInputMessage] = useState<string>('');
