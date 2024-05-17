@@ -40,8 +40,7 @@ yarn-error.log*
 next-env.d.ts
 
 package-lock.json
-
-components/ui
+ 
 
 yarn.lock
 
