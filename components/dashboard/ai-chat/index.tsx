@@ -163,7 +163,7 @@ export default function Chat(props: Props) {
     >
       <div className="relative flex w-full flex-col pt-[20px] md:pt-0">
         <div className="absolute left-[50%] top-[50%] z-[0] mt-[100px] flex w-[200px] -translate-x-[50%] items-center justify-center md:mt-[120px] xl:mt-[200px] xl:w-[350px] ">
-          <Image
+          <img
             width="340"
             height="181"
             src={`${theme === 'dark' ? Bgdark : Bg}`}
