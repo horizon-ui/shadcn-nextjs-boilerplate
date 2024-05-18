@@ -20,7 +20,7 @@ export default function SidebarDocs() {
         width="54"
         height="30"
         className="w-[54px]"
-        src={`${SidebarImage.src}`}
+        src={`/SidebarBadge.png`}
         alt=""
       />
       <div className="mb-3 flex w-full flex-col pt-4">
