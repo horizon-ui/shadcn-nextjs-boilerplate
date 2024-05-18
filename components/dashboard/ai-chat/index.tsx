@@ -170,7 +170,7 @@ export default function Chat(props: Props) {
             className="absolute z-[0] w-[200px] translate-y-[-50%] xl:w-[350px] "
             alt=""
           />
-          <div className="relative z-[0] flex max-w-[250px] -translate-y-[100%] flex-col md:min-w-[400px] md:-translate-y-[150%]">
+          <div className="relative z-[0] flex max-w-[250px] -translate-y-[100%] flex-col md:min-w-[400px] md:-translate-y-[150%] xl:-translate-y-[300%]">
             <div className="mb-4 flex flex-col md:flex-row">
               <input
                 className="mb-2.5 mr-0 h-11 min-h-[34px] w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-400 md:mb-0 md:mr-2.5"
