@@ -1,22 +1,23 @@
 // Auth Imports
 import { IRoute } from '@/types/types';
-import { FaMicrochip } from 'react-icons/fa6';
 import {
   HiOutlineHome,
   HiOutlineCpuChip,
   HiOutlineUsers,
+  HiOutlineUser,
   HiOutlineCog8Tooth,
   HiOutlineCreditCard,
   HiOutlineDocumentText,
   HiOutlineCurrencyDollar,
 } from 'react-icons/hi2';
-import { MdAssistant, MdAutoAwesome, MdWorkspacePremium } from 'react-icons/md';
 
 export const routes: IRoute[] = [
   {
     name: 'AI Chat',
     path: '/dashboard/ai-chat',
-    icon: <FaMicrochip className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />,
+    icon: (
+      <HiOutlineCpuChip className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
+    ),
     collapse: false,
   },
   {
@@ -30,7 +31,7 @@ export const routes: IRoute[] = [
     name: 'AI Generator',
     path: '/dashboard/ai-generator',
     icon: (
-      <MdWorkspacePremium className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
+      <HiOutlineDocumentText className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
     collapse: false,
     disabled: true,
@@ -38,7 +39,7 @@ export const routes: IRoute[] = [
   {
     name: 'AI Assistant',
     path: '/dashboard/ai-assistant',
-    icon: <MdAssistant className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />,
+    icon: <HiOutlineUser className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />,
     collapse: false,
     disabled: true,
   },
