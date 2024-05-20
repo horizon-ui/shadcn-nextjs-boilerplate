@@ -1,67 +1,92 @@
 &nbsp;
 <p align="center">
-  <a href="https://horizon-ui.com/boilerplate" target="_blank">
-    <img src="https://i.ibb.co/LYGWM0W/top-boilerplate-readme.png" alt="Horizon UI Boilerplate - NextJS Template for Startups & Companies" width="400px" max-width="400px">
+  <a href="https://horizon-ui.com/boilerplate-shadcn" target="_blank">
+    <img src="https://i.ibb.co/DGSsjWL/top-boilerplate-shadcn-readme.png" alt="Horizon AI Boilerplate NextJS Shadcn UI" width="300px" max-width="400px">
   </a>
 </p>
 
 <p align="center">
-    <a style="color: #4318FF;" target="_blank" href="https://horizon-ui.com/boilerplate">Website</a> •
-    <a style="color: #4318FF;" target="_blank" href="https://horizon-ui.com/docs-boilerplate/">Documentation</a> •
-    <a style="color: #4318FF;" target="_blank" href="https://horizon-ui.com/pro">Admin Template</a> •
-    <a style="color: #4318FF;" target="_blank" href="https://horizon-ui.com/ai-template">AI Template</a> •
-    <a style="color: #4318FF;" target="_blank" href="https://twitter.com/horizon_ui">Twitter</a>
+    <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/boilerplate-shadcn">Website</a> •
+    <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/docs-boilerplate/shadcn-components/auth-UI">Documentation</a> •
+    <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/pro">Admin Template</a> •
+    <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/ai-template">AI Template</a> •
+    <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://twitter.com/horizon_ui">Twitter</a>
 <p align="center" style="max-width: 500px; margin: auto;">
-  Launch your SaaS startup within a few days with the all-in-one NextJS boilerplate that you always searched for.
+  Launch your SaaS startup within a few days with the first Shadcn UI NextJS boilerplate. Get started with Horizon AI Boilerplate today!
 
 </p>
 
 &nbsp;
 
 <p align="center" style="width: 100%;">
-<a style="display:flex; justify-content: center; width: 100%;" href="https://horizon-ui.com/boilerplate" target="_blank"><img style="border-radius: 10px; width: 100%;" src="https://i.ibb.co/G0xrhsk/horizon-boilerplate-image-readme.png" alt="Horizon UI Free Tailwind CSS Landing Page Kit" /></a>
+<a style="display:flex; justify-content: center; width: 100%;" href="https://horizon-ui.com/boilerplate-shadcn" target="_blank"><img style="border-radius: 10px; width: 100%;" src="https://i.ibb.co/D8nGtS1/horizon-free-boilerplate-shadcn-image-readme.png" alt="Horizon AI Boilerplate NextJS Shadcn UI" /></a>
 </p>
 
 
 &nbsp;
 
-# Quickstart install
+### Introduction
 
-Install our product by running either of the following:
+Horizon AI Boilerplate is the first open source OpenAI ChatGPT AI Template made for Shadcn UI, NextJS and Tailwind CSS! Start creating outstanding Chat AI SaaS Apps faster.
 
-- Open the .zip archive file you got when you bought Horizon
-&nbsp;
-- Install NodeJS LTS from [NodeJs Official Page](https://nodejs.org/en/) (NOTE: Product only works with LTS version).
-&nbsp;
+It comes with over 30+ dark/light frontend individual elements, like buttons, inputs, navbars, nav tabs, cards, or alerts, giving you the freedom of choosing and combining.
+
+### Documentation
+
+Each element is well presented in a very complex documentation. You can read more about the <a href="https://horizon-ui.com/docs-boilerplate/shadcn-components/chat" target="_blank">documentation here.</a>
+
+### Quick Start
+
+Install Horizon ChatGPT AI Template by running either of the following:
+
+- Install NodeJS LTS from [NodeJs Official Page](https://nodejs.org/en/?ref=horizon-documentation) (NOTE: Product only works with LTS version)
+
+Clone the repository with the following command:
+
+```bash
+git clone https://github.com/horizon-ui/shadcn-nextjs-boilerplate.git
+```
 
 Run in the terminal this command:
 
-```
+```bash
 npm install
 ```
 
-<br />
+Then run this command to start your local server
 
-Then run this command to start your local server:
-
-```
+```bash
 npm run dev
 ```
-&nbsp;
 
-# Documentation
+### Your API Key is not working?
 
-View <a href="https://horizon-ui.com/docs-boilerplate/" target="_blank">full documentation here</a>
+- Make sure you have an [OpenAI account](https://platform.openai.com/account) and a valid API key to use ChatGPT. We don't sell API keys.
+- Make sure you have your billing info added in [OpenAI Billing page](https://platform.openai.com/account/billing/overview). Without billing info, your API key will not work.
+- The app will connect to the OpenAI API server to check if your API Key is working properly. 
 
 
----
+### Figma Version
 
-# Example Sections
+Horizon AI Boilerplate is available in Figma format as well! [Check it out here](https://www.figma.com/community/file/1374394029061088369)! 🎨
+
+
+### Example Sections
 
 If you want to get inspiration for your startup project or just show something directly to your clients, you can jump-start your development with our pre-built example sections. You will be able to quickly set up the basic structure for your web project.
 
- View <a href="https://horizon-ui.com/boilerplate#pages" target="_blank">example sections here</a>
+ View <a href="https://horizon-ui.com/boilerplate-shadcn#pages" target="_blank">example sections here</a>
 
+ ---
+
+
+# PRO Version
+
+Unlock a huge amount of components and pages with our PRO version - <a href="https://horizon-ui.com/boilerplate-shadcn#pricing" target="_blank">Learn more</a>
+
+<p align="center" style="width: 100%;">
+<a style="display:flex; justify-content: center; width: 100%;" href="https://horizon-ui.com/boilerplate-shadcn#pricing" target="_blank"><img style="border-radius: 10px; width: 100%;" src="https://i.ibb.co/5x6FcYD/horizon-boilerplate-shadcn-image-readme.png" alt="Horizon AI Boilerplate NextJS Shadcn UI" /></a>
+</p>
 
 
 ---
@@ -71,7 +96,7 @@ If you want to get inspiration for your startup project or just show something d
 We use GitHub Issues as the official bug tracker for the Horizon UI. Here are
 some advice for our users who want to report an issue:
 
-1. Make sure that you are using the latest version of the Horizon UI Boilerplate. Check the CHANGELOG for your dashboard on our [CHANGE LOG File](https://github.com/horizon-ui/boilerplate-issues/blob/main/CHANGELOG.md).
+1. Make sure that you are using the latest version of the Horizon UI Boilerplate. Check the CHANGELOG for your dashboard on our [CHANGE LOG File](https://github.com/horizon-ui/shadcn-nextjs-boilerplate/blob/main/CHANGELOG.md).
 <br />
 
 1. Providing us with reproducible steps for the issue will shorten the time it takes for it to be fixed.
@@ -102,5 +127,6 @@ Connect with the community! Feel free to ask questions, report issues, and meet 
 
 Special thanks to the open-source resources that helped us create this awesome boilerplate package, including:
 
+- [Shadcn UI Library](https://ui.shadcn.com/)
 - [NextJS Subscription Payments](https://github.com/vercel/nextjs-subscription-payments)
 - [ChatBot UI by mckaywrigley](https://github.com/mckaywrigley/chatbot-ui)
