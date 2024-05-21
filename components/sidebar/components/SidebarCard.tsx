@@ -32,8 +32,11 @@ export default function SidebarDocs() {
           Horizon AI Boilerplate PRO!
         </p>
       </div>{' '}
-      <a target="_blank" href="/pricing">
-        <Button className="mt-auto flex h-full w-[200px] items-center justify-center rounded-lg px-4 py-2.5 text-base font-medium">
+      <a
+        target="_blank"
+        href="https://horizon-ui.com/boilerplate-shadcn#pricing"
+      >
+        <Button className="mt-auto flex h-full w-[200px] items-center justify-center rounded-lg px-4 py-2.5 text-sm font-medium">
           Get started with PRO
         </Button>
       </a>

@@ -13,62 +13,75 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          defer
+          data-site="horizon-ui.com"
+          src="https://api.nepcha.com/js/nepcha-analytics.js"
+        ></script>
         <title>
-          Horizon UI Boilerplate - Launch your startup project 10X in a few
-          moments - The best NextJS Boilerplate (This is an example)
+          Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI
+          Template - Horizon AI Boilerplate
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* <!--  Social tags   --> */}
         <meta
-          name="keywords"
-          content="Add here your main keywords and separate them with a comma"
+          name="description"
+          content="Launch your SaaS startup within a few days with the first Shadcn UI NextJS boilerplate. Get started with Horizon AI Boilerplate today! Horizon AI Boilerplate is the first open source OpenAI ChatGPT AI Template made for Shadcn UI, NextJS and Tailwind CSS! Start creating outstanding Chat AI SaaS Apps faster."
         />
-        <meta name="description" content="Add here your website description" />
         {/* <!-- Schema.org markup for Google+ --> */}
-        <meta itemProp="name" content="Add here your website name / title" />
+        <meta
+          itemProp="name"
+          content="Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI Template - Horizon AI Boilerplate"
+        />
         <meta
           itemProp="description"
-          content="Add here your website description"
+          content="Launch your SaaS startup within a few days with the first Shadcn UI NextJS boilerplate. Get started with Horizon AI Boilerplate today! Horizon AI Boilerplate is the first open source OpenAI ChatGPT AI Template made for Shadcn UI, NextJS and Tailwind CSS! Start creating outstanding Chat AI SaaS Apps faster."
         />
         <meta
           itemProp="image"
-          content="Add here the link for your website SEO image"
+          content="https://i.ibb.co/Bc0jZ2S/horizon-free-boilerplate-shadcn-image.png"
         />
         {/* <!-- Twitter Card data --> */}
         <meta name="twitter:card" content="product" />
         <meta
           name="twitter:title"
-          content="Add here your website name / title"
+          content="Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI Template - Horizon AI Boilerplate"
         />
         <meta
           name="twitter:description"
-          content="Add here your website description"
+          content="Launch your SaaS startup within a few days with the first Shadcn UI NextJS boilerplate. Get started with Horizon AI Boilerplate today! Horizon AI Boilerplate is the first open source OpenAI ChatGPT AI Template made for Shadcn UI, NextJS and Tailwind CSS! Start creating outstanding Chat AI SaaS Apps faster."
         />
         <meta
           name="twitter:image"
-          content="Add here the link for your website SEO image"
+          content="https://i.ibb.co/Bc0jZ2S/horizon-free-boilerplate-shadcn-image.png"
         />
         {/* <!-- Open Graph data --> */}
         <meta
           property="og:title"
-          content="Add here your website name / title"
+          content="Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI Template - Horizon AI Boilerplate"
         />
         <meta property="og:type" content="product" />
-        <meta property="og:url" content="https://your-website.com" />
+        <meta
+          property="og:url"
+          content="https://horizon-ui.com/shadcn-nextjs-boilerplate"
+        />
         <meta
           property="og:image"
-          content="Add here the link for your website SEO image"
+          content="https://i.ibb.co/Bc0jZ2S/horizon-free-boilerplate-shadcn-image.png"
         />
         <meta
           property="og:description"
-          content="Add here your website description"
+          content="Launch your SaaS startup within a few days with the first Shadcn UI NextJS boilerplate. Get started with Horizon AI Boilerplate today! Horizon AI Boilerplate is the first open source OpenAI ChatGPT AI Template made for Shadcn UI, NextJS and Tailwind CSS! Start creating outstanding Chat AI SaaS Apps faster."
         />
         <meta
           property="og:site_name"
-          content="Add here your website name / title"
+          content="Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI Template - Horizon AI Boilerplate"
         />
-        <link rel="canonical" href="https://your-website.com" />
-        <link rel="icon" href="/img/favicon.ico" />
+        <link
+          rel="canonical"
+          href="https://horizon-ui.com/shadcn-nextjs-boilerplate"
+        />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body id={'root'} className="loading bg-white">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
