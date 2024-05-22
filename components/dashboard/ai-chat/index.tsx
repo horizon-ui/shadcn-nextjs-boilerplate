@@ -86,7 +86,7 @@ export default function Chat(props: Props) {
     };
 
     // -------------- Fetch --------------
-    const response = await fetch('/api/chatAPI', {
+    const response = await fetch('/shadcn-nextjs-boilerplate/api/chatAPI', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
