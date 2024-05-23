@@ -19,8 +19,8 @@ export default function RootLayout({
           src="https://api.nepcha.com/js/nepcha-analytics.js"
         ></script>
         <title>
-          Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI
-          Template - Horizon AI Boilerplate
+          Live Preview - Free & Open-source Shadcn UI NextJS Boilerplate ChatGPT
+          UI AI Template - Horizon AI Boilerplate
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* <!--  Social tags   --> */}
@@ -31,7 +31,7 @@ export default function RootLayout({
         {/* <!-- Schema.org markup for Google+ --> */}
         <meta
           itemProp="name"
-          content="Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI Template - Horizon AI Boilerplate"
+          content="Live Preview - Free & Open-source Shadcn UI NextJS Boilerplate ChatGPT UI AI Template - Horizon AI Boilerplate"
         />
         <meta
           itemProp="description"
@@ -45,7 +45,7 @@ export default function RootLayout({
         <meta name="twitter:card" content="product" />
         <meta
           name="twitter:title"
-          content="Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI Template - Horizon AI Boilerplate"
+          content="Live Preview - Free & Open-source Shadcn UI NextJS Boilerplate ChatGPT UI AI Template - Horizon AI Boilerplate"
         />
         <meta
           name="twitter:description"
@@ -58,7 +58,7 @@ export default function RootLayout({
         {/* <!-- Open Graph data --> */}
         <meta
           property="og:title"
-          content="Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI Template - Horizon AI Boilerplate"
+          content="Live Preview - Free & Open-source Shadcn UI NextJS Boilerplate ChatGPT UI AI Template - Horizon AI Boilerplate"
         />
         <meta property="og:type" content="product" />
         <meta
@@ -75,7 +75,7 @@ export default function RootLayout({
         />
         <meta
           property="og:site_name"
-          content="Live Preview - Shadcn UI NextJS Boilerplate open-source ChatGPT UI AI Template - Horizon AI Boilerplate"
+          content="Live Preview - Free & Open-source Shadcn UI NextJS Boilerplate ChatGPT UI AI Template - Horizon AI Boilerplate"
         />
         <link
           rel="canonical"
