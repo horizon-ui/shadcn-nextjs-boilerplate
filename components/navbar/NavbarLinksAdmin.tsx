@@ -87,9 +87,23 @@ export default function HeaderLinks(props: {
             className="w-full"
             // className="flex h-[44px] w-full min-w-[44px] cursor-pointer items-center rounded-lg border border-zinc-200 bg-transparent text-center text-sm font-medium text-zinc-950 duration-100 placeholder:text-zinc-950 hover:bg-gray-100 focus:bg-zinc-200 active:bg-zinc-200 dark:border-white/10 dark:bg-zinc-950 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/20 dark:active:bg-white/20"
           >
-            <Button variant="outline" className="mb-2 w-full">
-              Pricing
-            </Button>
+            {' '}
+            <a
+              target="blank"
+              href="https://horizon-ui.com/boilerplate-shadcn#pricing"
+            >
+              <Button variant="outline" className="mb-2 w-full">
+                See PRO Version
+              </Button>
+            </a>
+            <a
+              target="blank"
+              href="https://github.com/horizon-ui/shadcn-nextjs-boilerplate"
+            >
+              <Button variant="outline" className="mb-2 w-full">
+                Help us with a Star
+              </Button>
+            </a>
           </a>
           <a target="blank" href="mailto:hello@horizon-ui.com">
             <Button variant="outline" className="mb-2 w-full">
