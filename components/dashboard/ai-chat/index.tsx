@@ -227,14 +227,14 @@ export default function Chat(props: Props) {
                 GPT-4o
               </div>
             </div>
-            <Accordion type="multiple" className="w-full">
+            <Accordion type="multiple" className="!z-[100] w-full">
               <AccordionItem
-                className="z-10 mx-auto my-0 w-max min-w-[150px] border-0 text-zinc-950 dark:text-white"
+                className="!z-[1] mx-auto my-0 w-max min-w-[150px] border-0 text-zinc-950 dark:text-white"
                 value="item-1"
               >
-                <AccordionTrigger className="dark:text-white">
-                  <div className="text-center">
-                    <p className="text-sm font-medium text-zinc-950 dark:text-zinc-400">
+                <AccordionTrigger className="!z-[100] dark:text-white">
+                  <div className="!z-[1] text-center">
+                    <p className="!z-[1] text-sm font-medium text-zinc-950 dark:text-zinc-400">
                       No plugins added
                     </p>
                   </div>
