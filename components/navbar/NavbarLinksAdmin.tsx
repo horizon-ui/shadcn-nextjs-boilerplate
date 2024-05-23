@@ -110,7 +110,10 @@ export default function HeaderLinks(props: {
               Help & Support
             </Button>
           </a>
-          <a target="blank" href="/#faqs">
+          <a
+            target="blank"
+            href="https://horizon-ui.com/boilerplate-shadcn#faqs"
+          >
             <Button variant="outline" className="w-full">
               FAQs & More
             </Button>
