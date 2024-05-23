@@ -47,6 +47,17 @@ export default function HeaderLinks(props: {
       >
         <FiAlignJustify className="h-4 w-4" />
       </Button>
+      <a
+        target="blank"
+        href="https://github.com/horizon-ui/shadcn-nextjs-boilerplate"
+      >
+        <Button
+          variant="outline"
+          className="flex cursor-pointer rounded-full border-zinc-200 px-4 text-sm text-zinc-950 dark:border-zinc-800 dark:text-white"
+        >
+          Download for Free
+        </Button>
+      </a>
       <Button
         variant="outline"
         className="flex h-9 min-w-9 cursor-pointer rounded-full border-zinc-200 p-0 text-xl text-zinc-950 dark:border-zinc-800 dark:text-white md:min-h-10 md:min-w-10"

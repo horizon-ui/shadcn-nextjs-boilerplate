@@ -53,7 +53,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
         <main
           className={`mx-2.5 flex-none transition-all dark:bg-zinc-950 md:pr-2 xl:ml-[328px]`}
         >
-          <div className="mx-auto min-h-screen p-2 !pt-[90px] md:p-2 md:!pt-[118px]">
+          <div className="mx-auto min-h-screen p-2 !pt-[120px] md:p-2 md:!pt-[118px]">
             {props.children}
           </div>
           <Navbar
