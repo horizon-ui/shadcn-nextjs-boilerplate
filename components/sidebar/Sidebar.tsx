@@ -106,7 +106,7 @@ function Sidebar(props: SidebarProps) {
               </div>
               <div className="mb-8 mt-8 h-px bg-zinc-200 dark:bg-white/10" />
               {/* Nav item */}
-              <ul className="-me-4">
+              <ul>
                 <Links
                   routes={routes}
                   session={props.session}
