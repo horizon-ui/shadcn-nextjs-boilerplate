@@ -2,6 +2,7 @@ import SupabaseProvider from './supabase-provider';
 import { PropsWithChildren } from 'react';
 import '@/styles/globals.css';
 import { ThemeProvider } from './theme-provider';
+import Script from 'next/script';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,6 +14,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=GTM-KC7D56Q`}
+        />
+        <Script
+          id="script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'GTM-KC7D56Q');
+            `,
+          }}
+        />
         <script
           defer
           data-site="horizon-ui.com"
