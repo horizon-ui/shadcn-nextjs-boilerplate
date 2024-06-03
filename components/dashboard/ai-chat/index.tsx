@@ -7,7 +7,7 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionTrigger
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
@@ -40,7 +40,6 @@ interface Props {
   products: ProductWithPrices[];
   subscription: SubscriptionWithProduct | null;
   userDetails: { [x: string]: any } | null;
-  apiKeyApp: any;
 }
 export default function Chat(props: Props) {
   const { toast } = useToast();
@@ -48,7 +47,7 @@ export default function Chat(props: Props) {
   // *** If you use .env.local variable for your API key, method which we recommend, use the apiKey variable commented below
   // Input States
   const [inputOnSubmit, setInputOnSubmit] = useState<string>('');
-  const [inputMessage, setInputMessage] = useState<string>(''); 
+  const [inputMessage, setInputMessage] = useState<string>('');
   // Response message
   const [outputCode, setOutputCode] = useState<string>('');
   // ChatGPT model
@@ -70,7 +69,7 @@ export default function Chat(props: Props) {
 
     if (inputMessage.length > maxCodeLength) {
       alert(
-        `Please enter code less than ${maxCodeLength} characters. You are currently at ${inputMessage.length} characters.`,
+        `Please enter code less than ${maxCodeLength} characters. You are currently at ${inputMessage.length} characters.`
       );
       return;
     }
@@ -79,25 +78,24 @@ export default function Chat(props: Props) {
     const controller = new AbortController();
     const body: ChatBody = {
       inputMessage,
-      model,
-      apiKey,
+      model
     };
 
     // -------------- Fetch --------------
     const response = await fetch('/api/chatAPI', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       signal: controller.signal,
-      body: JSON.stringify(body),
+      body: JSON.stringify(body)
     });
 
     if (!response.ok) {
       setLoading(false);
       if (response) {
         alert(
-          'Something went wrong went fetching from the API. Make sure to use a valid API key.',
+          'Something went wrong went fetching from the API. Make sure to use a valid API key.'
         );
       }
       return;
@@ -137,7 +135,7 @@ export default function Chat(props: Props) {
 
   const handleChange = (Event: any) => {
     setInputMessage(Event.target.value);
-  }; 
+  };
 
   return (
     <DashboardLayout
@@ -157,7 +155,7 @@ export default function Chat(props: Props) {
             src={theme === 'dark' ? Bgdark.src : Bg.src}
             className="absolute z-[0] w-[200px] translate-y-[-50%] xl:w-[350px] "
             alt=""
-          />  
+          />
         </div>
         <div className="mx-auto flex min-h-[75vh] w-full max-w-[1000px] flex-col xl:min-h-[85vh]">
           {/* Model Change */}

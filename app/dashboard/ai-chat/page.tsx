@@ -2,7 +2,7 @@ import {
   getSession,
   getUserDetails,
   getSubscription,
-  getActiveProductsWithPrices,
+  getActiveProductsWithPrices
 } from '@/app/supabase-server';
 import Chat from '@/components/dashboard/ai-chat';
 import { redirect } from 'next/navigation';
@@ -12,7 +12,7 @@ export default async function Account() {
     getSession(),
     getUserDetails(),
     getActiveProductsWithPrices(),
-    getSubscription(),
+    getSubscription()
   ]);
 
   if (!session) {
@@ -26,7 +26,6 @@ export default async function Account() {
       user={session?.user}
       products={products}
       subscription={subscription}
-      apiKeyApp={process.env.NEXT_PUBLIC_OPENAI_API_KEY}
     />
   );
 }
