@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
+    "init": "npm install && npx shadcn-ui@latest add --all",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
