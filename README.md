@@ -41,6 +41,8 @@ Install Horizon ChatGPT AI Template by running either of the following:
 
 - Install NodeJS LTS from [NodeJs Official Page](https://nodejs.org/en/?ref=horizon-documentation) (NOTE: Product only works with LTS version)
 
+<br />
+
 Clone the repository with the following command:
 
 ```bash
@@ -49,15 +51,24 @@ git clone https://github.com/horizon-ui/shadcn-nextjs-boilerplate.git
 
 Run in the terminal this command:
 
-```bash
+```
 npm install
 ```
 
-Then run this command to start your local server
+<br />
 
-```bash
+```
+npm run init
+```
+
+<br />
+
+Then run this command to start your local server:
+
+```
 npm run dev
 ```
+&nbsp;
 
 ### Your API Key is not working?
 
