@@ -12,7 +12,7 @@
     <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/ai-template">AI Template</a> •
     <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://twitter.com/horizon_ui">Twitter</a>
 <p align="center" style="max-width: 500px; margin: auto;">
-  Launch your SaaS startup within a few days with the first Shadcn UI NextJS boilerplate. Get started with Horizon AI Boilerplate today!
+  Launch your SaaS startup within a few days with the first Admin Dashboard Shadcn UI NextJS boilerplate. Get started with Horizon AI Boilerplate today!
 
 </p>
 
