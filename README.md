@@ -1,7 +1,7 @@
 &nbsp;
 <p align="center">
   <a href="https://horizon-ui.com/boilerplate-shadcn" target="_blank">
-    <img src="https://i.ibb.co/DGSsjWL/top-boilerplate-shadcn-readme.png" alt="Horizon AI Boilerplate NextJS Shadcn UI" width="300px" max-width="400px">
+    <img src="https://i.ibb.co/DGSsjWL/top-boilerplate-shadcn-readme.png" alt="Horizon AI Boilerplate Admin Dashboard NextJS Shadcn UI" width="300px" max-width="400px">
   </a>
 </p>
 
@@ -27,7 +27,7 @@
 
 ### Introduction
 
-Horizon AI Boilerplate is the first open source OpenAI ChatGPT AI Template made for Shadcn UI, NextJS and Tailwind CSS! Start creating outstanding Chat AI SaaS Apps faster.
+Horizon AI Boilerplate is the first open-source Admin Dashboard OpenAI ChatGPT AI Template made for Shadcn UI, NextJS, and Tailwind CSS! Start creating outstanding Chat AI SaaS Apps faster.
 
 It comes with over 30+ dark/light frontend individual elements, like buttons, inputs, navbars, nav tabs, cards, or alerts, giving you the freedom of choosing and combining.
 
