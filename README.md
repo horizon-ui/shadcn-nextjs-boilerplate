@@ -8,8 +8,8 @@
 <p align="center">
     <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/boilerplate-shadcn">Website</a> •
     <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/docs-boilerplate/shadcn-components/auth-UI">Documentation</a> •
-    <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/pro">Admin Template</a> •
-    <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/ai-template">AI Template</a> •
+    <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/boilerplate-shadcn">PRO Version</a> •
+    <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://github.com/horizon-ui/shadcn-nextjs-boilerplate">Free Template</a> •
     <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://twitter.com/horizon_ui">Twitter</a>
 <p align="center" style="max-width: 500px; margin: auto;">
   Launch your SaaS startup within a few days with the first Admin Dashboard Shadcn UI NextJS boilerplate. Get started with Horizon AI Boilerplate today!
