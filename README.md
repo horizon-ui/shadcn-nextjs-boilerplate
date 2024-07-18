@@ -1,4 +1,5 @@
 &nbsp;
+
 <p align="center">
   <a href="https://horizon-ui.com/boilerplate-shadcn" target="_blank">
     <img src="https://i.ibb.co/DGSsjWL/top-boilerplate-shadcn-readme.png" alt="Horizon AI Boilerplate Admin Dashboard NextJS Shadcn UI" width="300px" max-width="400px">
