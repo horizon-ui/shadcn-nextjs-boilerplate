@@ -19,7 +19,7 @@
 &nbsp;
 
 <p align="center" style="width: 100%;">
-<a style="display:flex; justify-content: center; width: 100%;" href="https://horizon-ui.com/boilerplate-shadcn" target="_blank"><img style="border-radius: 10px; width: 100%;" src="https://i.ibb.co/D8nGtS1/horizon-free-boilerplate-shadcn-image-readme.png" alt="Horizon AI Boilerplate NextJS Shadcn UI" /></a>
+<a style="display:flex; justify-content: center; width: 100%;" href="https://horizon-ui.com/boilerplate-shadcn" target="_blank"><img style="border-radius: 10px; width: 100%;" src="https://i.ibb.co/72bXVwG/horizon-free-boilerplate-shadcn-image-readme-2.png" alt="Horizon AI Boilerplate NextJS Shadcn UI" /></a>
 </p>
 
 
