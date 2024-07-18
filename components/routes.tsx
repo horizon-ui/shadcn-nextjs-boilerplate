@@ -14,13 +14,13 @@ import {
 export const routes: IRoute[] = [
   {
     name: 'Main Dashboard',
-    path: '/dashboard/main',
+    path: '/shadcn-nextjs-boilerplate/dashboard/main',
     icon: <HiOutlineHome className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />,
     collapse: false
   },
   {
     name: 'AI Chat',
-    path: '/dashboard/ai-chat',
+    path: '/shadcn-nextjs-boilerplate/dashboard/ai-chat',
     icon: (
       <HiOutlineCpuChip className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
