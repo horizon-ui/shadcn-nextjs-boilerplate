@@ -6,7 +6,7 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionTrigger
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -32,7 +32,7 @@ export function SidebarLinks(props: SidebarLinksProps) {
     (routeName: string) => {
       return pathname?.includes(routeName);
     },
-    [pathname],
+    [pathname]
   );
 
   // this function creates the links and collapses that appear in the sidebar (left menu)
@@ -71,7 +71,9 @@ export function SidebarLinks(props: SidebarLinksProps) {
               }`}
             >
               <NavLink
-                href={route.layout ? route.layout + route.path : route.path}
+                href={`/shadcn-nextjs-boilerplate/${
+                  route.layout ? route.layout + route.path : route.path
+                }`}
                 key={key}
                 styles={{ width: '100%' }}
               >
@@ -109,7 +111,10 @@ export function SidebarLinks(props: SidebarLinksProps) {
     return routes.map((route: IRoute, key: number) => {
       return (
         <li className="mb-2.5 ml-[28px] flex max-w-full items-center" key={key}>
-          <NavLink href={route.layout + route.path} key={key}>
+          <NavLink
+            href={`/shadcn-nextjs-boilerplate/${route.layout + route.path}`}
+            key={key}
+          >
             <FaCircle className="mr-2 h-1.5 w-1.5 text-zinc-950 dark:text-white" />
             <p
               className={`text-xs ${
