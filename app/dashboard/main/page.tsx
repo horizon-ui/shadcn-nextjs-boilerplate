@@ -4,7 +4,7 @@ import {
   getSubscription,
   getActiveProductsWithPrices
 } from '@/app/supabase-server';
-import Chat from '@/components/dashboard/ai-chat';
+import Main from '@/components/dashboard/main';
 import { redirect } from 'next/navigation';
 
 export default async function Account() {
@@ -16,17 +16,17 @@ export default async function Account() {
   ]);
 
   // if (!session) {
-  //   return redirect('https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/signin');
+  //   return redirect('/dashboard/signin');
   // }
 
   return (
-    <Chat
+    // @ts-ignore
+    <Main
       session={session}
       userDetails={userDetails}
       user={session?.user}
       products={products}
       subscription={subscription}
-      apiKeyApp={process.env.NEXT_PUBLIC_OPENAI_API_KEY}
     />
   );
 }

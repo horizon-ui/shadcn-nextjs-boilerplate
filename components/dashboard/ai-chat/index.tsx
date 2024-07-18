@@ -7,7 +7,7 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionTrigger
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
@@ -72,7 +72,7 @@ export default function Chat(props: Props) {
 
     if (inputMessage.length > maxCodeLength) {
       alert(
-        `Please enter code less than ${maxCodeLength} characters. You are currently at ${inputMessage.length} characters.`,
+        `Please enter code less than ${maxCodeLength} characters. You are currently at ${inputMessage.length} characters.`
       );
       return;
     }
@@ -82,24 +82,24 @@ export default function Chat(props: Props) {
     const body: ChatBody = {
       inputMessage,
       model,
-      apiKey,
+      apiKey
     };
 
     // -------------- Fetch --------------
     const response = await fetch('/shadcn-nextjs-boilerplate/api/chatAPI', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       signal: controller.signal,
-      body: JSON.stringify(body),
+      body: JSON.stringify(body)
     });
 
     if (!response.ok) {
       setLoading(false);
       if (response) {
         alert(
-          'Something went wrong went fetching from the API. Make sure to use a valid API key.',
+          'Something went wrong went fetching from the API. Make sure to use a valid API key.'
         );
       }
       return;
@@ -147,7 +147,7 @@ export default function Chat(props: Props) {
     setApiKey(inputApiKey);
     toast({
       title: 'API Key was set!',
-      description: 'Succesfully set API key!',
+      description: 'Succesfully set API key!'
     });
   };
 

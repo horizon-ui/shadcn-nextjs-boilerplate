@@ -8,24 +8,23 @@ import {
   HiOutlineCog8Tooth,
   HiOutlineCreditCard,
   HiOutlineDocumentText,
-  HiOutlineCurrencyDollar,
+  HiOutlineCurrencyDollar
 } from 'react-icons/hi2';
 
 export const routes: IRoute[] = [
+  {
+    name: 'Main Dashboard',
+    path: '/dashboard/main',
+    icon: <HiOutlineHome className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />,
+    collapse: false
+  },
   {
     name: 'AI Chat',
     path: '/dashboard/ai-chat',
     icon: (
       <HiOutlineCpuChip className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
-    collapse: false,
-  },
-  {
-    name: 'Main Dashboard',
-    path: '/dashboard/main',
-    icon: <HiOutlineHome className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />,
-    collapse: false,
-    disabled: true,
+    collapse: false
   },
   {
     name: 'AI Generator',
@@ -34,14 +33,14 @@ export const routes: IRoute[] = [
       <HiOutlineDocumentText className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
     collapse: false,
-    disabled: true,
+    disabled: true
   },
   {
     name: 'AI Assistant',
     path: '/dashboard/ai-assistant',
     icon: <HiOutlineUser className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />,
     collapse: false,
-    disabled: true,
+    disabled: true
   },
   {
     name: 'Users List',
@@ -50,7 +49,7 @@ export const routes: IRoute[] = [
       <HiOutlineUsers className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
     collapse: false,
-    disabled: true,
+    disabled: true
   },
   {
     name: 'Profile Settings',
@@ -59,7 +58,7 @@ export const routes: IRoute[] = [
       <HiOutlineCog8Tooth className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
     collapse: false,
-    disabled: true,
+    disabled: true
   },
   {
     name: 'Subscription',
@@ -68,7 +67,7 @@ export const routes: IRoute[] = [
       <HiOutlineCreditCard className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
     collapse: false,
-    disabled: true,
+    disabled: true
   },
   {
     name: 'Landing Page',
@@ -77,7 +76,7 @@ export const routes: IRoute[] = [
       <HiOutlineDocumentText className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
     collapse: false,
-    disabled: true,
+    disabled: true
   },
   {
     name: 'Pricing Page',
@@ -86,6 +85,6 @@ export const routes: IRoute[] = [
       <HiOutlineCurrencyDollar className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
     collapse: false,
-    disabled: true,
-  },
+    disabled: true
+  }
 ];
