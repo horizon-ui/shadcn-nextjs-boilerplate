@@ -1,13 +1,17 @@
 import { EssayBody } from '@/types/types';
-import { OpenAIStream } from '@/utils/essayStream';
+import { OpenAIStream } from '@/utils/streams/essayStream';
 
+export const runtime = 'edge';
 
-export const runtime = 'edge'
-
-export async function GET(req: Request): Promise<Response>{
+export async function GET(req: Request): Promise<Response> {
   try {
-    const { topic, words, essayType, model, apiKey } =
-      (await req.json()) as EssayBody;
+    const {
+      topic,
+      words,
+      essayType,
+      model,
+      apiKey
+    } = (await req.json()) as EssayBody;
 
     let apiKeyFinal;
     if (apiKey) {
@@ -21,7 +25,7 @@ export async function GET(req: Request): Promise<Response>{
       essayType,
       words,
       model,
-      apiKeyFinal,
+      apiKeyFinal
     );
 
     return new Response(stream);
@@ -29,12 +33,16 @@ export async function GET(req: Request): Promise<Response>{
     console.error(error);
     return new Response('Error', { status: 500 });
   }
-
 }
-export async function POST(req: Request): Promise<Response>{
+export async function POST(req: Request): Promise<Response> {
   try {
-    const { topic, words, essayType, model, apiKey } =
-      (await req.json()) as EssayBody;
+    const {
+      topic,
+      words,
+      essayType,
+      model,
+      apiKey
+    } = (await req.json()) as EssayBody;
 
     let apiKeyFinal;
     if (apiKey) {
@@ -48,7 +56,7 @@ export async function POST(req: Request): Promise<Response>{
       essayType,
       words,
       model,
-      apiKeyFinal,
+      apiKeyFinal
     );
 
     return new Response(stream);
@@ -56,6 +64,4 @@ export async function POST(req: Request): Promise<Response>{
     console.error(error);
     return new Response('Error', { status: 500 });
   }
-
 }
- 

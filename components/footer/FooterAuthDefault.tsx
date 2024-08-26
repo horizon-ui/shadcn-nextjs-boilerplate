@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <div className="z-[3] flex flex-col items-center justify-between pb-[30px] md:px-0 lg:flex-row">
+    <div className="z-[3] flex flex-col items-center justify-between mt-auto pb-[30px] md:px-0 lg:flex-row">
       <ul className="flex flex-row">
         <li className="mr-4 md:mr-[44px]">
           <a

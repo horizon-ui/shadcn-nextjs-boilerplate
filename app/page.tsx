@@ -1,20 +1,14 @@
-import {
-  getSession,
-  getUserDetails,
-  getSubscription,
-} from '@/app/supabase-server';
+import { getUser } from '@/utils/supabase/queries';
 import { redirect } from 'next/navigation';
+import { createClient } from '@/utils/supabase/server';
 
-export default async function Account() {
-  const [session, userDetails, subscription] = await Promise.all([
-    getSession(),
-    getUserDetails(),
-    getSubscription(),
-  ]);
+export default async function Dashboard() {
+  const supabase = createClient();
+  const [user] = await Promise.all([getUser(supabase)]);
 
-  if (!session) {
+  if (!user) {
     return redirect('/dashboard/signin');
   } else {
-    redirect('/dashboard/ai-chat');
+    redirect('/dashboard/main');
   }
 }

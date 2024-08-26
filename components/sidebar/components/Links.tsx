@@ -2,20 +2,9 @@
 
 /* eslint-disable */
 import NavLink from '@/components/link/NavLink';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { IRoute } from '@/types/types';
-import { useTheme } from 'next-themes';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { PropsWithChildren, useCallback } from 'react';
-import { FaCircle } from 'react-icons/fa';
-import { IoMdAdd } from 'react-icons/io';
 
 interface SidebarLinksProps extends PropsWithChildren {
   routes: IRoute[];
@@ -32,7 +21,13 @@ export function SidebarLinks(props: SidebarLinksProps) {
     (routeName: string) => {
       return pathname?.includes(routeName);
     },
-    [pathname],
+    [pathname]
+  );
+  const activeLayout = useCallback(
+    (routeName: string) => {
+      return pathname?.includes('/ai');
+    },
+    [pathname]
   );
 
   // this function creates the links and collapses that appear in the sidebar (left menu)
@@ -102,29 +97,6 @@ export function SidebarLinks(props: SidebarLinksProps) {
           </div>
         );
       }
-    });
-  };
-  // this function creates the links from the secondary accordions (for example auth -> sign-in -> default)
-  const createAccordionLinks = (routes: IRoute[]) => {
-    return routes.map((route: IRoute, key: number) => {
-      return (
-        <li className="mb-2.5 ml-[28px] flex max-w-full items-center" key={key}>
-          <NavLink href={route.layout + route.path} key={key}>
-            <FaCircle className="mr-2 h-1.5 w-1.5 text-zinc-950 dark:text-white" />
-            <p
-              className={`text-xs ${
-                activeRoute(route.path.toLowerCase()) ? 'font-semibold' : ''
-              } ${
-                activeRoute(route.path.toLowerCase())
-                  ? 'text-zinc-950 dark:text-white'
-                  : 'text-zinc-950 dark:text-white'
-              }`}
-            >
-              {route.name}
-            </p>
-          </NavLink>
-        </li>
-      );
     });
   };
   //  BRAND

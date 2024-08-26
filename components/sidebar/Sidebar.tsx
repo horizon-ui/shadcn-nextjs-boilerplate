@@ -2,70 +2,38 @@
 
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
-import { useSupabase } from '@/app/supabase-provider';
 import {
   renderThumb,
   renderTrack,
-  renderView,
+  renderView
 } from '@/components/scrollbar/Scrollbar';
 import Links from '@/components/sidebar/components/Links';
 import SidebarCard from '@/components/sidebar/components/SidebarCard';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card } from '@/components/ui/card';
 import { IRoute } from '@/types/types';
-import { Database } from '@/types/types_db';
-import { postData } from '@/utils/helpers';
-import { getStripe } from '@/utils/stripe-client';
-import { useRouter } from 'next/navigation';
-import React, { PropsWithChildren } from 'react';
-import { useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { PropsWithChildren, useContext } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { HiX } from 'react-icons/hi';
 import { HiBolt } from 'react-icons/hi2';
 import { HiOutlineArrowRightOnRectangle } from 'react-icons/hi2';
+import { getRedirectMethod } from '@/utils/auth-helpers/settings';
+import { SignOut } from '@/utils/auth-helpers/server';
+import { handleRequest } from '@/utils/auth-helpers/client';
+import { UserContext, UserDetailsContext } from '@/contexts/layout';
 
 export interface SidebarProps extends PropsWithChildren {
   routes: IRoute[];
   [x: string]: any;
 }
-interface SidebarLinksProps extends PropsWithChildren {
-  routes: IRoute[];
-  [x: string]: any;
-}
-
-type Price = Database['public']['Tables']['prices']['Row'];
 
 function Sidebar(props: SidebarProps) {
-  const router = useRouter();
-  const { supabase } = useSupabase();
+  const router = getRedirectMethod() === 'client' ? useRouter() : null;
   const { routes } = props;
-  const [plan, setPlan] = useState({
-    product: 'prod_OXGZkl2lnZ9VId',
-    price: 'price_1OAEhUDUwD2aqzMkbQUIFuiI',
-  });
-  const [priceIdLoading, setPriceIdLoading] = useState<string>();
-  const handleCheckout = async (price: Price) => {
-    setPriceIdLoading(price.id);
-    if (!props.user) {
-      return router.push('/dashboard/signin');
-    }
-    if (props.subscription) {
-      return router.push('/dashboard/settings');
-    }
-    try {
-      const { sessionId } = await postData({
-        url: '/api/create-checkout-session',
-        data: { price },
-      });
 
-      const stripe = await getStripe();
-      stripe?.redirectToCheckout({ sessionId });
-    } catch (error) {
-      return alert((error as Error)?.message);
-    } finally {
-      setPriceIdLoading(undefined);
-    }
-  };
+  const user = useContext(UserContext);
+  const userDetails = useContext(UserDetailsContext);
   // SIDEBAR
   return (
     <div
@@ -107,16 +75,7 @@ function Sidebar(props: SidebarProps) {
               <div className="mb-8 mt-8 h-px bg-zinc-200 dark:bg-white/10" />
               {/* Nav item */}
               <ul>
-                <Links
-                  routes={routes}
-                  session={props.session}
-                  userDetails={props.userDetails}
-                  user={props.session?.user}
-                  products={props.products}
-                  subscription={props.subscription}
-                  plan={plan}
-                  setPlan={setPlan}
-                />
+                <Links routes={routes} />
               </ul>
             </div>
             {/* Free Horizon Card    */}
@@ -128,34 +87,39 @@ function Sidebar(props: SidebarProps) {
               <div className="mt-5 flex w-full items-center rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
                 <a href="/dashboard/settings">
                   <Avatar className="min-h-10 min-w-10">
-                    <AvatarImage src={props.userDetails?.avatar_url ?? ''} />
+                    <AvatarImage src={user?.user_metadata.avatar_url} />
                     <AvatarFallback className="font-bold dark:text-zinc-950">
-                      US
+                      {userDetails.full_name
+                        ? `${userDetails.full_name[0]}`
+                        : `${user?.user_metadata.email[0].toUpperCase()}`}
                     </AvatarFallback>
                   </Avatar>
                 </a>
                 <a href="/dashboard/settings">
                   <p className="ml-2 mr-3 flex items-center text-sm font-semibold leading-none text-zinc-950 dark:text-white">
-                    {props.userDetails?.full_name
-                      ? props.userDetails?.full_name
-                      : 'User Not Found'}
+                    {user?.user_metadata.full_name
+                      ? user?.user_metadata.full_name
+                      : `User`}
                   </p>
                 </a>
-                <Button
-                  variant="outline"
-                  className="ml-auto flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full p-0 text-center text-sm font-medium hover:dark:text-white"
-                  onClick={() => {
-                    supabase.auth.signOut();
-                    router.push('/');
-                  }}
+                <form
+                  className="w-full"
+                  onSubmit={(e) => handleRequest(e, SignOut, router)}
                 >
-                  <HiOutlineArrowRightOnRectangle
-                    className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white"
-                    width="16px"
-                    height="16px"
-                    color="inherit"
-                  />
-                </Button>
+                  <input type="hidden" name="pathName" value={usePathname()} />
+                  <Button
+                    variant="outline"
+                    className="ml-auto flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full p-0 text-center text-sm font-medium hover:dark:text-white"
+                    type="submit"
+                  >
+                    <HiOutlineArrowRightOnRectangle
+                      className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white"
+                      width="16px"
+                      height="16px"
+                      color="inherit"
+                    />
+                  </Button>
+                </form>
               </div>
             </div>
           </div>

@@ -1,14 +1,18 @@
-import Stripe from 'stripe';import { ComponentType, ReactNode } from 'react';
+import Stripe from 'stripe';
+import { ComponentType, ReactNode } from 'react';
 
-
-export type OpenAIModel = 'gpt-3.5-turbo' | 'gpt-4' | 'gpt-4-1106-preview'| 'gpt-4o';
+export type OpenAIModel =
+  | 'gpt-3.5-turbo'
+  | 'gpt-4'
+  | 'gpt-4-1106-preview'
+  | 'gpt-4o';
 
 export interface TranslateBody {
   // inputLanguage: string;
   // outputLanguage: string;
   topic: string;
-  paragraphs:string,
-  essayType:string,
+  paragraphs: string;
+  essayType: string;
   model: OpenAIModel;
   type?: 'review' | 'refactor' | 'complexity' | 'normal';
 }
@@ -97,8 +101,8 @@ export interface IRoute {
   layout?: string;
   exact?: boolean;
   component?: ComponentType;
-  disabled?:boolean
-  icon?: JSX.Element ;
+  disabled?: boolean;
+  icon?: JSX.Element;
   secondary?: boolean;
   collapse?: boolean;
   items?: IRoute[];
@@ -108,19 +112,14 @@ export interface IRoute {
 
 export interface EssayBody {
   topic: string;
-  words: "300" | "200";
-  essayType:
-    | ''
-    | 'Argumentative'
-    | 'Classic'
-    | 'Persuasive' 
-    | 'Critique' 
+  words: '300' | '200';
+  essayType: '' | 'Argumentative' | 'Classic' | 'Persuasive' | 'Critique';
   model: OpenAIModel;
   apiKey?: string | undefined;
 }
 export interface PremiumEssayBody {
-  words:string;
-  topic: string; 
+  words: string;
+  topic: string;
   essayType:
     | ''
     | 'Argumentative'
@@ -134,14 +133,10 @@ export interface PremiumEssayBody {
     | 'Expository'
     | 'Cause and Effect'
     | 'Reflective'
-    | "Informative";
-    tone:string;
-    citation:string;
-    level:string;
+    | 'Informative';
+  tone: string;
+  citation: string;
+  level: string;
   model: OpenAIModel;
   apiKey?: string | undefined;
-}
-
-declare global {
-  var Paddle: any;
 }

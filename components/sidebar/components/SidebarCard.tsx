@@ -1,18 +1,9 @@
 'use client';
 
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import SidebarImage from '@/public/SidebarBadge.png';
-import { Database } from '@/types/types_db';
-import { useTheme } from 'next-themes';
 import Image from 'next/image';
-import { BiSolidCheckSquare } from 'react-icons/bi';
-import { IoIosStar } from 'react-icons/io';
 
-type Price = Database['public']['Tables']['prices']['Row'];
-interface SidebarCard {
-  [x: string]: any;
-}
 export default function SidebarDocs() {
   return (
     <div className="relative flex flex-col items-center rounded-lg border border-zinc-200 px-3 py-4 dark:border-white/10">

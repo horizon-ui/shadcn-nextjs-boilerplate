@@ -3,34 +3,12 @@
 /* eslint-disable */
 import AdminNavbarLinks from './NavbarLinksAdmin';
 import NavLink from '@/components/link/NavLink';
-import { isWindowAvailable } from '@/utils/navigation';
-import { useState, useEffect } from 'react';
 
 export default function AdminNavbar(props: {
   brandText: string;
-
-  userDetails: { [x: string]: any } | null;
-  onOpen: (...args: any[]) => any;
   [x: string]: any;
 }) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    isWindowAvailable() && window.addEventListener('scroll', changeNavbar);
-
-    return () => {
-      isWindowAvailable() && window.removeEventListener('scroll', changeNavbar);
-    };
-  });
-
-  const { brandText, userDetails, onOpen } = props;
-  const changeNavbar = () => {
-    if (isWindowAvailable() && window.scrollY > 1) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
+  const { brandText } = props;
 
   return (
     <nav
@@ -65,14 +43,7 @@ export default function AdminNavbar(props: {
         </p>
       </div>
       <div className="w-[154px] min-w-max md:ml-auto md:w-[unset]">
-        <AdminNavbarLinks
-          onOpen={onOpen}
-          userDetails={userDetails}
-          session={props.session}
-          user={props.session?.user}
-          products={props.products}
-          subscription={props.subscription}
-        />
+        <AdminNavbarLinks />
       </div>
     </nav>
   );
