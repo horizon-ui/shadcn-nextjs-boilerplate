@@ -6,6 +6,7 @@ const nextConfig = {
       'i.ibb.co',
       'scontent.fotp8-1.fna.fbcdn.net',
     ],
+    assetPrefix: '/shadcn-nextjs-boilerplate',
     remotePatterns: [
       {
         protocol: 'https',
