@@ -15,8 +15,6 @@ export default async function AiChat() {
     return redirect(
       '/shadcn-nextjs-boilerplate/dashboard/signin'
     );
-  } else {
-    redirect('/shadcn-nextjs-boilerplate/dashboard/main');
   }
 
   return <Chat user={user} userDetails={userDetails} />;
