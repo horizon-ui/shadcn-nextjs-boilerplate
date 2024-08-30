@@ -31,11 +31,6 @@ export default function RootLayout({
             `,
           }}
         />
-        <script
-          defer
-          data-site="horizon-ui.com"
-          src="https://api.nepcha.com/js/nepcha-analytics.js"
-        ></script>
         <title>
           Live Preview - Free & Open-source Shadcn UI NextJS Boilerplate ChatGPT
           UI AI Template - Horizon AI Boilerplate

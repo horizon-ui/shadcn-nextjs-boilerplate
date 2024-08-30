@@ -7,7 +7,7 @@ import { HiChartBar } from 'react-icons/hi2';
 
 function OverallRevenue() {
   const newOptions = {
-    ...lineChartOptionsMain
+    ...lineChartOptionsMain,
     // colors: ['var(--color-500)' ],
   };
 

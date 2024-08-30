@@ -1,32 +1,18 @@
-import {
-  getSession,
-  getUserDetails,
-  getSubscription,
-  getActiveProductsWithPrices
-} from '@/app/supabase-server';
 import Main from '@/components/dashboard/main';
 import { redirect } from 'next/navigation';
+import { getUserDetails, getUser } from '@/utils/supabase/queries';
+import { createClient } from '@/utils/supabase/server';
 
 export default async function Account() {
-  const [session, userDetails, products, subscription] = await Promise.all([
-    getSession(),
-    getUserDetails(),
-    getActiveProductsWithPrices(),
-    getSubscription()
+  const supabase = createClient();
+  const [user, userDetails] = await Promise.all([
+    getUser(supabase),
+    getUserDetails(supabase)
   ]);
 
-  // if (!session) {
-  //   return redirect('/dashboard/signin');
-  // }
+  if (!user) {
+    return redirect('/dashboard/signin');
+  }
 
-  return (
-    // @ts-ignore
-    <Main
-      session={session}
-      userDetails={userDetails}
-      user={session?.user}
-      products={products}
-      subscription={subscription}
-    />
-  );
+  return <Main user={user} userDetails={userDetails} />;
 }

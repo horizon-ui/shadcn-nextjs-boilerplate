@@ -10,12 +10,11 @@ import {
   AccordionTrigger
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 import Bgdark from '@/public/img/dark/ai-chat/bg-image.png';
 import Bg from '@/public/img/light/ai-chat/bg-image.png';
 import { ChatBody, OpenAIModel } from '@/types/types';
 import { Database } from '@/types/types_db';
-import { Session, User } from '@supabase/supabase-js';
+import { User } from '@supabase/supabase-js';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -35,26 +34,19 @@ interface SubscriptionWithProduct extends Subscription {
 }
 
 interface Props {
-  session: Session | null;
   user: User | null | undefined;
-  products: ProductWithPrices[];
-  subscription: SubscriptionWithProduct | null;
   userDetails: { [x: string]: any } | null;
-  apiKeyApp: any;
 }
 export default function Chat(props: Props) {
-  const { toast } = useToast();
   const { theme, setTheme } = useTheme();
-  // *** If you use `.env.local` variable for your API key, method which we recommend, use the apiKey variable commented below
+  // *** If you use .env.local variable for your API key, method which we recommend, use the apiKey variable commented below
   // Input States
   const [inputOnSubmit, setInputOnSubmit] = useState<string>('');
   const [inputMessage, setInputMessage] = useState<string>('');
-  const [inputApiKey, setInputApiKey] = useState<string>('');
-  const [apiKey, setApiKey] = useState<string>('');
   // Response message
   const [outputCode, setOutputCode] = useState<string>('');
   // ChatGPT model
-  const [model, setModel] = useState<OpenAIModel>('gpt-4-1106-preview');
+  const [model, setModel] = useState<OpenAIModel>('gpt-3.5-turbo');
   // Loading state
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -63,7 +55,7 @@ export default function Chat(props: Props) {
     setInputOnSubmit(inputMessage);
 
     // Chat post conditions(maximum number of characters, valid message etc.)
-    const maxCodeLength = model === 'gpt-4-1106-preview' ? 700 : 700;
+    const maxCodeLength = model === 'gpt-3.5-turbo' ? 700 : 700;
 
     if (!inputMessage) {
       alert('Please enter your subject.');
@@ -81,8 +73,7 @@ export default function Chat(props: Props) {
     const controller = new AbortController();
     const body: ChatBody = {
       inputMessage,
-      model,
-      apiKey
+      model
     };
 
     // -------------- Fetch --------------
@@ -140,101 +131,60 @@ export default function Chat(props: Props) {
   const handleChange = (Event: any) => {
     setInputMessage(Event.target.value);
   };
-  const handleInputApiKey = (Event: any) => {
-    setInputApiKey(Event.target.value);
-  };
-  const handleApiKey = (Event: any) => {
-    setApiKey(inputApiKey);
-    toast({
-      title: 'API Key was set!',
-      description: 'Succesfully set API key!'
-    });
-  };
 
   return (
     <DashboardLayout
-      session={props.session}
-      userDetails={props.userDetails}
-      user={props.session?.user}
-      products={props.products}
-      subscription={props.subscription}
+      user={props.user}
       title="AI Generator"
       description="AI Generator"
     >
       <div className="relative flex w-full flex-col pt-[20px] md:pt-0">
-        <div className="absolute left-[50%] top-[50%] z-[0] mt-[100px] flex w-[200px] -translate-x-[50%] items-center justify-center md:mt-[120px] xl:mt-[200px] xl:w-[350px] ">
-          <Image
-            width="340"
-            height="181"
-            src={`${theme === 'dark' ? Bgdark.src : Bg.src}`}
-            className="absolute z-[0] w-[200px] translate-y-[-50%] xl:w-[350px] "
-            alt=""
-          />
-          <div className="relative z-[0] flex max-w-[250px] -translate-y-[100%] flex-col md:min-w-[400px] md:-translate-y-[150%] xl:-translate-y-[300%]">
-            <div className="mb-4 flex flex-col md:flex-row">
-              <input
-                className="mb-2.5 mr-0 h-11 min-h-[34px] w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-400 md:mb-0 md:mr-2.5"
-                placeholder="Type your OpenAI Key here..."
-                onChange={handleInputApiKey}
-              />
-              <Button
-                className="mx-auto mt-auto flex h-full w-full items-center justify-center rounded-lg px-4 py-2.5 text-base font-medium md:w-[200px]"
-                onClick={handleApiKey}
-              >
-                Set API Key
-              </Button>
-            </div>
-            <a
-              className=" w-full text-center text-sm text-zinc-500 underline dark:text-zinc-400 md:left-6 md:top-8"
-              target="_blank"
-              href="https://platform.openai.com/account/api-keys"
-            >
-              Get your API key from Open AI Dashboard
-            </a>
-          </div>
-        </div>
+        <Image
+          width="340"
+          height="181"
+          src={theme === 'dark' ? Bgdark.src : Bg.src}
+          className="absolute left-[20%] top-[50%] z-[0] w-[200px] translate-y-[-50%] md:left-[35%] lg:left-[38%] xl:left-[38%] xl:w-[350px] "
+          alt=""
+        />
         <div className="mx-auto flex min-h-[75vh] w-full max-w-[1000px] flex-col xl:min-h-[85vh]">
           {/* Model Change */}
           <div
-            className={`flex w-full flex-col ${
-              outputCode ? 'mb-5' : 'mb-auto'
-            }`}
+            className={`flex w-full flex-col ${outputCode ? 'mb-5' : 'mb-auto'
+              }`}
           >
-            <div className="z-[0] mx-auto mb-5 flex w-max rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800">
+            <div className="z-[2] mx-auto mb-5 flex w-max rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800">
               <div
-                className={`flex cursor-pointer items-center justify-center py-2 transition-all duration-75 ${
-                  model === 'gpt-4-1106-preview'
+                className={`flex cursor-pointer items-center justify-center py-2 transition-all duration-75 ${model === 'gpt-3.5-turbo'
                     ? 'bg-white dark:bg-zinc-950'
                     : 'transparent'
-                } h-[70xp] w-[174px] ${
-                  model === 'gpt-4-1106-preview' ? '' : ''
-                } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
+                  } h-[70xp] w-[174px]
+       ${model === 'gpt-3.5-turbo' ? '' : ''
+                  } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
+                onClick={() => setModel('gpt-3.5-turbo')}
+              >
+                GPT-3.5
+              </div>
+              <div
+                className={`flex cursor-pointer items-center justify-center py-2 transition-colors duration-75 ${model === 'gpt-4-1106-preview'
+                    ? 'bg-white dark:bg-zinc-950'
+                    : 'transparent'
+                  } h-[70xp] w-[174px]
+       ${model === 'gpt-4-1106-preview' ? '' : ''
+                  } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
                 onClick={() => setModel('gpt-4-1106-preview')}
               >
                 GPT-4
               </div>
-              <div
-                className={`flex cursor-pointer items-center justify-center py-2 transition-colors duration-75 ${
-                  model === 'gpt-4o'
-                    ? 'bg-white dark:bg-zinc-950'
-                    : 'transparent'
-                } h-[70xp] w-[174px]
-                ${
-                  model === 'gpt-4o' ? '' : ''
-                } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
-                onClick={() => setModel('gpt-4o')}
-              >
-                GPT-4o
-              </div>
             </div>
-            <Accordion type="multiple" className="!z-[100] w-full">
+
+            <Accordion type="multiple" className="w-full">
               <AccordionItem
-                className="!z-[1] mx-auto my-0 w-max min-w-[150px] border-0 text-zinc-950 dark:text-white"
+                className="z-10 mx-auto my-0 w-max min-w-[150px] border-0 text-zinc-950 dark:text-white"
                 value="item-1"
               >
-                <AccordionTrigger className="!z-[100] dark:text-white">
-                  <div className="!z-[1] text-center">
-                    <p className="!z-[1] text-sm font-medium text-zinc-950 dark:text-zinc-400">
+                <AccordionTrigger className="dark:text-white">
+                  <div className="text-center">
+                    <p className="text-sm font-medium text-zinc-950 dark:text-zinc-400">
                       No plugins added
                     </p>
                   </div>
@@ -249,9 +199,8 @@ export default function Chat(props: Props) {
           </div>
           {/* Main Box */}
           <div
-            className={`mx-auto flex w-full flex-col ${
-              outputCode ? 'flex' : 'hidden'
-            } mb-auto`}
+            className={`mx-auto flex w-full flex-col ${outputCode ? 'flex' : 'hidden'
+              } mb-auto`}
           >
             <div className="mb-2.5 flex w-full items-center text-center">
               <div className="mr-5 flex h-[40px] min-h-[40px] min-w-[40px] items-center justify-center rounded-full border border-zinc-200 bg-transparent dark:border-transparent dark:bg-white">

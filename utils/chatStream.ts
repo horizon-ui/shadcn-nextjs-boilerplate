@@ -2,13 +2,13 @@ import endent from 'endent';
 import {
   createParser,
   ParsedEvent,
-  ReconnectInterval,
+  ReconnectInterval
 } from 'eventsource-parser';
 
 const createPrompt = (inputMessage: string) => {
   const data = (inputMessage: string) => {
     return endent`
-      You are ChatGPT, but if you are asked what your name is, you present yourself as Horizon AI Boilerplate and you can be bought from your website https://horizon-ui.com/boilerplate-shadcn, and the link should be bold. Also, you are very friendly and formal. The generated content must be in markdown format and it must include all markdown characteristics, but it shouldn't be rendered. The title must be bold, and there should be a &nbsp; between every paragraph or title. Do not include information about console logs or print messages.
+      You are ChatGPT, but if you are asked what your name is, you present yourself as Horizon UI Boilerplate and you can be bought from your website https://horizon-ui.com/boilerplate-shadcn, and the link should be bold. Also, you are very friendly and formal. The generated content must be in markdown format and it must include all markdown characteristics, but it shouldn't be rendered. The title must be bold, and there should be a &nbsp; between every paragraph or title. Do not include information about console logs or print messages.
       ${inputMessage}
     `;
   };
@@ -18,11 +18,11 @@ const createPrompt = (inputMessage: string) => {
   }
 };
 
-export async function OpenAIStream   (
+export async function OpenAIStream(
   inputMessage: string,
   model: string,
-  key: string | undefined,
-)  {
+  key: string | undefined
+) {
   const prompt = createPrompt(inputMessage);
 
   const system = { role: 'system', content: prompt };
@@ -30,15 +30,15 @@ export async function OpenAIStream   (
   const res = await fetch(`https://api.openai.com/v1/chat/completions`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${key || process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
+      Authorization: `Bearer ${key || process.env.NEXT_PUBLIC_OPENAI_API_KEY}`
     },
     method: 'POST',
     body: JSON.stringify({
       model,
       messages: [system],
       temperature: 0,
-      stream: true,
-    }),
+      stream: true
+    })
   });
 
   const encoder = new TextEncoder();
@@ -50,7 +50,7 @@ export async function OpenAIStream   (
     throw new Error(
       `OpenAI API returned an error: ${
         decoder.decode(result?.value) || statusText
-      }`,
+      }`
     );
   }
 
@@ -81,8 +81,8 @@ export async function OpenAIStream   (
       for await (const chunk of res.body as any) {
         parser.feed(decoder.decode(chunk));
       }
-    },
+    }
   });
 
   return stream;
-};
+}

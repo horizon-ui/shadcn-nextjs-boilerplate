@@ -1,32 +1,23 @@
-import {
-  getSession,
-  getUserDetails,
-  getSubscription,
-  getActiveProductsWithPrices
-} from '@/app/supabase-server';
+import { getUserDetails, getUser } from '@/utils/supabase/queries';
+
 import Chat from '@/components/dashboard/ai-chat';
 import { redirect } from 'next/navigation';
+import { createClient } from '@/utils/supabase/server';
 
-export default async function Account() {
-  const [session, userDetails, products, subscription] = await Promise.all([
-    getSession(),
-    getUserDetails(),
-    getActiveProductsWithPrices(),
-    getSubscription()
+export default async function AiChat() {
+  const supabase = createClient();
+  const [user, userDetails] = await Promise.all([
+    getUser(supabase),
+    getUserDetails(supabase)
   ]);
 
-  // if (!session) {
-  //   return redirect('https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/signin');
-  // }
+  if (!user) {
+    return redirect(
+      'https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/signin'
+    );
+  } else {
+    redirect('https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/main');
+  }
 
-  return (
-    <Chat
-      session={session}
-      userDetails={userDetails}
-      user={session?.user}
-      products={products}
-      subscription={subscription}
-      apiKeyApp={process.env.NEXT_PUBLIC_OPENAI_API_KEY}
-    />
-  );
+  return <Chat user={user} userDetails={userDetails} />;
 }

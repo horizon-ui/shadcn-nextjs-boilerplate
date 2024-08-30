@@ -46,13 +46,9 @@ package-lock.json
 .env.local.production
 .env.local.new
 .env.local.non-docker
-
-components/ui
+ 
 
 yarn.lock
-config.toml.example
-
-
 
 # editors
 .vscode 

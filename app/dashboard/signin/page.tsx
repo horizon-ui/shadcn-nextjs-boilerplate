@@ -1,18 +1,11 @@
-import { getSession } from '@/app/supabase-server';
-import DefaultAuth from '@/components/auth';
-import AuthUI from '@/components/auth/AuthUI';
 import { redirect } from 'next/navigation';
+import { getDefaultSignInView } from '@/utils/auth-helpers/settings';
+import { cookies } from 'next/headers';
 
-export default async function SignIn() {
-  const session = await getSession();
+export default function SignIn() {
+  const preferredSignInView =
+    cookies().get('preferredSignInView')?.value || null;
+  const defaultView = getDefaultSignInView(preferredSignInView);
 
-  // if (session) {
-  //   return redirect('/dashboard/main');
-  // }
-
-  return (
-    <DefaultAuth>
-      <AuthUI />
-    </DefaultAuth>
-  );
+  return redirect(`/dashboard/signin/${defaultView}`);
 }
