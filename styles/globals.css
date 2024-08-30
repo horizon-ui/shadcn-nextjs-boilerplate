@@ -6,30 +6,35 @@
 :root {
   --radius: 8px;
   --chart: #0F172A; 
-  --background: 240 100% 100%;
-  --foreground: 222.2 47.4% 11.2%; 
+    --background: 0 0% 100%;
+  --foreground: white; 
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 47.4% 11.2%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 47.4% 11.2%;
+  --card: white;
+  --card-foreground: white;
+  --popover: white;
+  --popover-foreground: white;
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
   --primary: 240 10% 4% ;
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --secondary-foreground: white;
   --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  --accent-foreground: white;
   --destructive: 0 100% 50%;
   --destructive-foreground: 210 40% 98%;
   --ring: 0 0% 0%; 
+  --chart-1: #52525b;
+  --chart-2: #D4D4D8;
+  --chart-3: #030712;
+  --chart-4: #71717a;
+  --chart-5: #a1a1aa;
 }
 
 .dark { 
   --background: 240 10% 4%;
-  --foreground: 240 100% 100%;
+  --foreground: white;
   --chart: white;
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
@@ -47,7 +52,12 @@
   --accent-foreground: 222.2 47.4% 11.2%;
   --destructive: 0 100% 50%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 0 0% 0%; 
+  --ring: 0 0% 0%;
+  --chart-1: white;
+  --chart-2: #71717A;
+  --chart-3: #030712;
+  --chart-4: #71717a;
+  --chart-5: #a1a1aa;
 }
 
 body {
@@ -105,4 +115,10 @@ input.defaultCheckbox::before path {
 input:checked.defaultCheckbox::before {
   opacity: 1;
 }
- 
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+      }
+}
