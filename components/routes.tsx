@@ -14,13 +14,13 @@ import {
 export const routes: IRoute[] = [
   {
     name: 'Main Dashboard',
-    path: '/dashboard/main',
+    path: '/shadcn-nextjs-boilerplate/dashboard/main',
     icon: <HiOutlineHome className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />,
     collapse: false
   },
   {
     name: 'AI Chat',
-    path: '/dashboard/ai-chat',
+    path: '/shadcn-nextjs-boilerplate/dashboard/ai-chat',
     icon: (
       <HiOutlineCpuChip className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
@@ -28,7 +28,7 @@ export const routes: IRoute[] = [
   },
   {
     name: 'AI Generator',
-    path: '/dashboard/ai-generator',
+    path: '/shadcn-nextjs-boilerplate/dashboard/ai-generator',
     icon: (
       <HiOutlineDocumentText className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
@@ -37,14 +37,14 @@ export const routes: IRoute[] = [
   },
   {
     name: 'AI Assistant',
-    path: '/dashboard/ai-assistant',
+    path: '/shadcn-nextjs-boilerplate/dashboard/ai-assistant',
     icon: <HiOutlineUser className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />,
     collapse: false,
     disabled: true
   },
   {
     name: 'Users List',
-    path: '/dashboard/users-list',
+    path: '/shadcn-nextjs-boilerplate/dashboard/users-list',
     icon: (
       <HiOutlineUsers className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
@@ -53,7 +53,7 @@ export const routes: IRoute[] = [
   },
   {
     name: 'Profile Settings',
-    path: '/dashboard/settings',
+    path: '/shadcn-nextjs-boilerplate/dashboard/settings',
     icon: (
       <HiOutlineCog8Tooth className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
@@ -62,7 +62,7 @@ export const routes: IRoute[] = [
   },
   {
     name: 'Subscription',
-    path: '/dashboard/subscription',
+    path: '/shadcn-nextjs-boilerplate/dashboard/subscription',
     icon: (
       <HiOutlineCreditCard className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
