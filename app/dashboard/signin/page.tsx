@@ -7,5 +7,5 @@ export default function SignIn() {
     cookies().get('preferredSignInView')?.value || null;
   const defaultView = getDefaultSignInView(preferredSignInView);
 
-  return redirect(`/dashboard/signin/${defaultView}`);
+  return redirect(`/shadcn-nextjs-boilerplate/dashboard/signin/${defaultView}`);
 }
