@@ -11,7 +11,7 @@ export default async function Account() {
   ]);
 
   if (!user) {
-    return redirect('/dashboard/signin');
+    return redirect('/shadcn-nextjs-boilerplate/dashboard/signin');
   }
 
   return <Main user={user} userDetails={userDetails} />;

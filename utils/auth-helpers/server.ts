@@ -29,7 +29,7 @@ export async function SignOut(formData: FormData) {
     );
   }
 
-  return '/dashboard/signin';
+  return '/shadcn-nextjs-boilerplate/dashboard/signin';
 }
 
 export async function signInWithEmail(formData: FormData) {
@@ -41,7 +41,7 @@ export async function signInWithEmail(formData: FormData) {
 
   if (!isValidEmail(email)) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/email_signin',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/email_signin',
       'Invalid email address.',
       'Please try again.'
     );
@@ -63,21 +63,21 @@ export async function signInWithEmail(formData: FormData) {
 
   if (error) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/email_signin',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/email_signin',
       'You could not be signed in.',
       error.message
     );
   } else if (data) {
     cookieStore.set('preferredSignInView', 'email_signin', { path: '/' });
     redirectPath = getStatusRedirect(
-      '/dashboard/signin/email_signin',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/email_signin',
       'Success!',
       'Please check your email for a magic link. You may now close this tab.',
       true
     );
   } else {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/email_signin',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/email_signin',
       'Hmm... Something went wrong.',
       'You could not be signed in.'
     );
@@ -95,7 +95,7 @@ export async function requestPasswordUpdate(formData: FormData) {
 
   if (!isValidEmail(email)) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/forgot_password',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/forgot_password',
       'Invalid email address.',
       'Please try again.'
     );
@@ -109,20 +109,20 @@ export async function requestPasswordUpdate(formData: FormData) {
 
   if (error) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/forgot_password',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/forgot_password',
       error.message,
       'Please try again.'
     );
   } else if (data) {
     redirectPath = getStatusRedirect(
-      '/dashboard/signin/forgot_password',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/forgot_password',
       'Success!',
       'Please check your email for a password reset link. You may now close this tab.',
       true
     );
   } else {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/forgot_password',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/forgot_password',
       'Hmm... Something went wrong.',
       'Password reset email could not be sent.'
     );
@@ -145,7 +145,7 @@ export async function signInWithPassword(formData: FormData) {
 
   if (error) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/password_signin',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/password_signin',
       'Sign in failed.',
       error.message
     );
@@ -154,7 +154,7 @@ export async function signInWithPassword(formData: FormData) {
     redirectPath = getStatusRedirect('/', 'Success!', 'You are now signed in.');
   } else {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/password_signin',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/password_signin',
       'Hmm... Something went wrong.',
       'You could not be signed in.'
     );
@@ -172,7 +172,7 @@ export async function signUp(formData: FormData) {
 
   if (!isValidEmail(email)) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/signup',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/signup',
       'Invalid email address.',
       'Please try again.'
     );
@@ -189,7 +189,7 @@ export async function signUp(formData: FormData) {
 
   if (error) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/signup',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/signup',
       'Sign up failed.',
       error.message
     );
@@ -201,7 +201,7 @@ export async function signUp(formData: FormData) {
     data.user.identities.length == 0
   ) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/signup',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/signup',
       'Sign up failed.',
       'There is already an account associated with this email address. Try resetting your password.'
     );
@@ -213,7 +213,7 @@ export async function signUp(formData: FormData) {
     );
   } else {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/signup',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/signup',
       'Hmm... Something went wrong.',
       'You could not be signed up.'
     );
@@ -230,7 +230,7 @@ export async function updatePassword(formData: FormData) {
   // Check that the password and confirmation match
   if (password !== passwordConfirm) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/update_password',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/update_password',
       'Your password could not be updated.',
       'Passwords do not match.'
     );
@@ -243,7 +243,7 @@ export async function updatePassword(formData: FormData) {
 
   if (error) {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/update_password',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/update_password',
       'Your password could not be updated.',
       error.message
     );
@@ -255,7 +255,7 @@ export async function updatePassword(formData: FormData) {
     );
   } else {
     redirectPath = getErrorRedirect(
-      '/dashboard/signin/update_password',
+      '/shadcn-nextjs-boilerplate/dashboard/signin/update_password',
       'Hmm... Something went wrong.',
       'Your password could not be updated.'
     );
@@ -271,7 +271,7 @@ export async function updateEmail(formData: FormData) {
   // Check that the email is valid
   if (!isValidEmail(newEmail)) {
     return getErrorRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Your email could not be updated.',
       'Invalid email address.'
     );
@@ -281,7 +281,7 @@ export async function updateEmail(formData: FormData) {
 
   const callbackUrl = getURL(
     getStatusRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Success!',
       `Your email has been updated.`
     )
@@ -296,13 +296,13 @@ export async function updateEmail(formData: FormData) {
 
   if (error) {
     return getErrorRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Your email could not be updated.',
       error.message
     );
   } else {
     return getStatusRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Confirmation emails sent.',
       `You will need to confirm the update by clicking the links sent to both the old and new email addresses.`
     );
@@ -320,19 +320,19 @@ export async function updateName(formData: FormData) {
 
   if (error) {
     return getErrorRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Your name could not be updated.',
       error.message
     );
   } else if (data.user) {
     return getStatusRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Success!',
       'Your name has been updated.'
     );
   } else {
     return getErrorRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Hmm... Something went wrong.',
       'Your name could not be updated.'
     );

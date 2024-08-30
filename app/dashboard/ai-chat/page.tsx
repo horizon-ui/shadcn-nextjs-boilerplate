@@ -13,10 +13,10 @@ export default async function AiChat() {
 
   if (!user) {
     return redirect(
-      'https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/signin'
+      '/shadcn-nextjs-boilerplate/dashboard/signin'
     );
   } else {
-    redirect('https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/main');
+    redirect('/shadcn-nextjs-boilerplate/dashboard/main');
   }
 
   return <Chat user={user} userDetails={userDetails} />;

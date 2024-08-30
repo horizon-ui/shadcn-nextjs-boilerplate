@@ -31,7 +31,7 @@ export default async function SignIn({
     const preferredSignInView =
       cookies().get('preferredSignInView')?.value || null;
     viewProp = getDefaultSignInView(preferredSignInView);
-    return redirect(`/dashboard/signin/${viewProp}`);
+    return redirect(`/shadcn-nextjs-boilerplate/dashboard/signin/${viewProp}`);
   }
 
   // Check if the user is already logged in and redirect to the account page if so
@@ -42,9 +42,9 @@ export default async function SignIn({
   } = await supabase.auth.getUser();
 
   if (user && viewProp !== 'update_password') {
-    return redirect('/dashboard/main');
+    return redirect('/shadcn-nextjs-boilerplate/dashboard/main');
   } else if (!user && viewProp === 'update_password') {
-    return redirect('/dashboard/signin');
+    return redirect('/shadcn-nextjs-boilerplate/dashboard/signin');
   }
 
   return (
