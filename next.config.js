@@ -1,12 +1,12 @@
 const nextConfig = {
   reactStrictMode: false, // changed this to false
+  assetPrefix: '/shadcn-nextjs-boilerplate',
   images: {
     domains: [
       'images.unsplash.com',
       'i.ibb.co',
       'scontent.fotp8-1.fna.fbcdn.net',
     ],
-    assetPrefix: '/shadcn-nextjs-boilerplate',
     remotePatterns: [
       {
         protocol: 'https',
