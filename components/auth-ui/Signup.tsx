@@ -91,7 +91,7 @@ export default function SignUp({ allowEmail, redirectMethod }: SignUpProps) {
       </form>
       <p>
         <Link
-          href="/dashboard/signin/forgot_password"
+          href="/shadcn-nextjs-boilerplate/dashboard/signin/forgot_password"
           className="font-medium text-zinc-950 dark:text-white text-sm"
         >
           Forgot your password?
@@ -99,7 +99,7 @@ export default function SignUp({ allowEmail, redirectMethod }: SignUpProps) {
       </p>
       <p className="font-medium text-sm dark:text-white">
         <Link
-          href="/dashboard/signin/password_signin"
+          href="/shadcn-nextjs-boilerplate/dashboard/signin/password_signin"
           className="font-medium text-sm dark:text-white"
         >
           Already have an account?
@@ -108,7 +108,7 @@ export default function SignUp({ allowEmail, redirectMethod }: SignUpProps) {
       {allowEmail && (
         <p className="font-medium text-sm dark:text-white">
           <Link
-            href="/dashboard/signin/email_signin"
+            href="/shadcn-nextjs-boilerplate/dashboard/signin/email_signin"
             className="font-medium text-sm dark:text-white"
           >
             Sign in via magic link

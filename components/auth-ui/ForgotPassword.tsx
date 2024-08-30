@@ -80,7 +80,7 @@ export default function ForgotPassword({
       </form>
       <p>
         <Link
-          href="/dashboard/signin/password_signin"
+          href="/shadcn-nextjs-boilerplate/dashboard/signin/password_signin"
           className="font-medium text-sm dark:text-white"
         >
           Sign in with email and password
@@ -89,7 +89,7 @@ export default function ForgotPassword({
       {allowEmail && (
         <p>
           <Link
-            href="/dashboard/signin/email_signin"
+            href="/shadcn-nextjs-boilerplate/dashboard/signin/email_signin"
             className="font-medium text-sm dark:text-white"
           >
             Sign in via magic link
@@ -98,7 +98,7 @@ export default function ForgotPassword({
       )}
       <p>
         <Link
-          href="/dashboard/signin/signup"
+          href="/shadcn-nextjs-boilerplate/dashboard/signin/signup"
           className="font-medium text-sm dark:text-white"
         >
           Don't have an account? Sign up

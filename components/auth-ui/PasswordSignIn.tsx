@@ -93,7 +93,7 @@ export default function PasswordSignIn({
       </form>
       <p>
         <a
-          href="/dashboard/signin/forgot_password"
+          href="/shadcn-nextjs-boilerplate/dashboard/signin/forgot_password"
           className="font-medium text-zinc-950 dark:text-white text-sm"
         >
           Forgot your password?
@@ -102,7 +102,7 @@ export default function PasswordSignIn({
       {allowEmail && (
         <p>
           <a
-            href="/dashboard/signin/email_signin"
+            href="/shadcn-nextjs-boilerplate/dashboard/signin/email_signin"
             className="font-medium text-zinc-950 dark:text-white text-sm"
           >
             Sign in via magic link
@@ -111,7 +111,7 @@ export default function PasswordSignIn({
       )}
       <p>
         <a
-          href="/dashboard/signin/signup"
+          href="/shadcn-nextjs-boilerplate/dashboard/signin/signup"
           className="font-medium text-zinc-950 dark:text-white text-sm"
         >
           Don't have an account? Sign up

@@ -83,7 +83,7 @@ export default function EmailSignIn({
         <>
           <p>
             <Link
-              href="/dashboard/signin/password_signin"
+              href="/shadcn-nextjs-boilerplate/dashboard/signin/password_signin"
               className="font-medium text-sm dark:text-white"
             >
               Sign in with email and password
@@ -91,7 +91,7 @@ export default function EmailSignIn({
           </p>
           <p>
             <Link
-              href="/dashboard/signin/signup"
+              href="/shadcn-nextjs-boilerplate/dashboard/signin/signup"
               className="font-medium text-sm dark:text-white"
             >
               Don't have an account? Sign up
