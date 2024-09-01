@@ -139,7 +139,7 @@ export default function Chat(props: Props) {
       description="AI Generator"
     >
       <div className="relative flex w-full flex-col pt-[20px] md:pt-0">
-        <img
+        <Image
           width="340"
           height="181"
           src={theme === 'dark' ? Bgdark.src : Bg.src}
