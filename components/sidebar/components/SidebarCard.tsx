@@ -10,8 +10,8 @@ export default function SidebarDocs() {
         width="54"
         height="30"
         className="w-[54px]"
-        src={SidebarImage.src} }
-      alt=""
+        src={SidebarImage.src}
+        alt=""
       />
       <div className="mb-3 flex w-full flex-col pt-4">
         <p className="mb-2.5 text-center text-lg font-bold text-zinc-950 dark:text-white">
