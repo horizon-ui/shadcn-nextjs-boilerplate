@@ -16,7 +16,6 @@ import { ChatBody, OpenAIModel } from '@/types/types';
 import { Database } from '@/types/types_db';
 import { User } from '@supabase/supabase-js';
 import { useTheme } from 'next-themes';
-import Image from 'next/image';
 import { useState } from 'react';
 import { HiUser, HiSparkles, HiMiniPencilSquare } from 'react-icons/hi2';
 
