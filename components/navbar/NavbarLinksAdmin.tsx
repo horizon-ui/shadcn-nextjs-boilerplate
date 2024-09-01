@@ -95,7 +95,10 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <form onSubmit={(e) => handleRequest(e, SignOut, router)}>
+      <form
+        className="w-full"
+        onSubmit={(e) => handleRequest(e, SignOut, router)}
+      >
         <input type="hidden" name="pathName" value={usePathname()} />
         <Button
           type="submit"
@@ -104,6 +107,10 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         >
           <HiOutlineArrowRightOnRectangle className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white" />
         </Button>
+      </form>
+      <form onSubmit={(e) => handleRequest(e, SignOut, router)}>
+        <input type="hidden" name="pathName" value={usePathname()} />
+
       </form>
       <a className="w-full" href="/shadcn-nextjs-boilerplate/dashboard/settings">
         <Avatar className="h-9 min-w-9 md:min-h-10 md:min-w-10">
