@@ -139,7 +139,7 @@ export default function Chat(props: Props) {
       description="AI Generator"
     >
       <div className="relative flex w-full flex-col pt-[20px] md:pt-0">
-        <Image
+        <img
           width="340"
           height="181"
           src={theme === 'dark' ? Bgdark.src : Bg.src}
@@ -155,8 +155,8 @@ export default function Chat(props: Props) {
             <div className="z-[2] mx-auto mb-5 flex w-max rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800">
               <div
                 className={`flex cursor-pointer items-center justify-center py-2 transition-all duration-75 ${model === 'gpt-3.5-turbo'
-                    ? 'bg-white dark:bg-zinc-950'
-                    : 'transparent'
+                  ? 'bg-white dark:bg-zinc-950'
+                  : 'transparent'
                   } h-[70xp] w-[174px]
        ${model === 'gpt-3.5-turbo' ? '' : ''
                   } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
@@ -166,8 +166,8 @@ export default function Chat(props: Props) {
               </div>
               <div
                 className={`flex cursor-pointer items-center justify-center py-2 transition-colors duration-75 ${model === 'gpt-4-1106-preview'
-                    ? 'bg-white dark:bg-zinc-950'
-                    : 'transparent'
+                  ? 'bg-white dark:bg-zinc-950'
+                  : 'transparent'
                   } h-[70xp] w-[174px]
        ${model === 'gpt-4-1106-preview' ? '' : ''
                   } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
