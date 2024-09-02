@@ -24,15 +24,8 @@ interface SubscriptionWithProduct extends Subscription {
 }
 
 interface Props {
-  session: Session | null;
   user: User | null | undefined;
-  products: ProductWithPrices[];
-  subscription: SubscriptionWithProduct | null | any;
   userDetails: { [x: string]: any } | null | any;
-  updateName: any;
-  updateEmail: any;
-  updatePassword: any;
-  apiKeyApp: any;
 }
 
 export default function Settings(props: Props) {
