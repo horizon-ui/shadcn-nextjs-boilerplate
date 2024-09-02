@@ -2,10 +2,8 @@
 
 import LineChart from '@/components/charts/LineChart';
 import { Card } from '@/components/ui/card';
-import { lineChartDataMain } from '@/variables/charts';
-import { lineChartOptionsMain } from '@/variables/charts';
+import { lineChartDataMain, lineChartOptionsMain } from '@/variables/charts';
 import { HiChartBar } from 'react-icons/hi2';
-import { MdInsights } from 'react-icons/md';
 
 function OverallRevenue() {
   const newOptions = {
@@ -14,7 +12,7 @@ function OverallRevenue() {
   };
 
   return (
-    <Card className={'border-zinc-200 p-6 dark:border-zinc-800'}>
+    <Card className={'border-zinc-200 p-6 dark:border-zinc-800 w-full'}>
       <div className="flex items-center gap-3">
         <div className="flex h-14 w-14 items-center justify-center rounded-full border border-zinc-200 text-4xl dark:border-zinc-800 dark:text-white">
           <HiChartBar className="h-5 w-5" />
