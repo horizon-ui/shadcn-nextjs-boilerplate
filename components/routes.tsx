@@ -27,6 +27,14 @@ export const routes: IRoute[] = [
     collapse: false
   },
   {
+    name: 'Profile Settings',
+    path: '/dashboard/settings',
+    icon: (
+      <HiOutlineCog8Tooth className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
+    ),
+    collapse: false
+  },
+  {
     name: 'AI Generator',
     path: '/dashboard/ai-generator',
     icon: (
@@ -47,15 +55,6 @@ export const routes: IRoute[] = [
     path: '/dashboard/users-list',
     icon: (
       <HiOutlineUsers className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
-    ),
-    collapse: false,
-    disabled: true
-  },
-  {
-    name: 'Profile Settings',
-    path: '/dashboard/settings',
-    icon: (
-      <HiOutlineCog8Tooth className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
     collapse: false,
     disabled: true
