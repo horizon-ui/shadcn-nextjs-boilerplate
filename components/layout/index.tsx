@@ -30,7 +30,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
         <OpenContext.Provider value={{ open, setOpen }}>
           <div className="dark:bg-background-900 flex h-full w-full bg-white">
             <Toaster />
-            <Sidebar routes={routes} />
+            <Sidebar routes={routes} setOpen={setOpen} />
             <div className="h-full w-full dark:bg-zinc-950">
               <main
                 className={`mx-2.5 flex-none transition-all dark:bg-zinc-950 md:pr-2 xl:ml-[328px]`}

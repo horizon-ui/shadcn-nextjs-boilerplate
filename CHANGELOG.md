@@ -1,3 +1,7 @@
+## [2.1.0] 2024-09-05
+
+### Added Settings page. ⚡️
+
 ## [2.0.0] 2024-08-26
 
 ### Big update: Supabase SSR, Refactoring & custom auth components
