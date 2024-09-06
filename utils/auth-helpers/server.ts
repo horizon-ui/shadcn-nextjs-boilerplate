@@ -34,7 +34,7 @@ export async function SignOut(formData: FormData) {
 
 export async function signInWithEmail(formData: FormData) {
   const cookieStore = cookies();
-  const callbackURL = getURL('/shadcn-nextjs-boilerplate/auth/callback');
+  const callbackURL = getURL('/auth/callback');
 
   const email = String(formData.get('email')).trim();
   let redirectPath: string;
@@ -164,7 +164,7 @@ export async function signInWithPassword(formData: FormData) {
 }
 
 export async function signUp(formData: FormData) {
-  const callbackURL = getURL('/shadcn-nextjs-boilerplate/auth/callback');
+  const callbackURL = getURL('/auth/callback');
 
   const email = String(formData.get('email')).trim();
   const password = String(formData.get('password')).trim();
