@@ -97,7 +97,10 @@ export default function HeaderLinks(props: { [x: string]: any }) {
 
       <form
         className="w-full"
-        onSubmit={(e) => handleRequest(e, SignOut, router)}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleRequest(e, SignOut, router);
+        }}
       >
         <input type="hidden" name="pathName" value={usePathname()} />
         <Button
@@ -107,9 +110,6 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         >
           <HiOutlineArrowRightOnRectangle className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white" />
         </Button>
-      </form>
-      <form onSubmit={(e) => handleRequest(e, SignOut, router)}>
-        <input type="hidden" name="pathName" value={usePathname()} />
       </form>
       <a
         className="w-full"
