@@ -1,4 +1,3 @@
-import SupabaseProvider from './supabase-provider';
 import { PropsWithChildren } from 'react';
 import '@/styles/globals.css';
 import { ThemeProvider } from './theme-provider';
@@ -28,7 +27,7 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'GTM-KC7D56Q');
-            `,
+            `
           }}
         />
         <title>
@@ -98,10 +97,8 @@ export default function RootLayout({
       </head>
       <body id={'root'} className="loading bg-white">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SupabaseProvider>
-            {/* @ts-ignore */}
-            <main id="skip">{children}</main>
-          </SupabaseProvider>
+          {/* @ts-ignore */}
+          <main id="skip">{children}</main>
         </ThemeProvider>
       </body>
     </html>
