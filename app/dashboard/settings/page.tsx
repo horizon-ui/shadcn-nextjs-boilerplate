@@ -10,7 +10,7 @@ export default async function SettingsPage() {
     getUserDetails(supabase)
   ]);
   if (!user) {
-    return redirect('/dashboard/signin');
+    return redirect('/shadcn-nextjs-boilerplate/dashboard/signin');
   }
 
   return <Settings userDetails={userDetails} user={user} />;

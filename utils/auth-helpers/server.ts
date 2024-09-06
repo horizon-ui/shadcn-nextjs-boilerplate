@@ -29,7 +29,7 @@ export async function SignOut(formData: FormData) {
     );
   }
 
-  return '/dashboard/signin';
+  return '/shadcn-nextjs-boilerplate/dashboard/signin';
 }
 
 export async function signInWithEmail(formData: FormData) {
