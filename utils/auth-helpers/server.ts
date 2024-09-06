@@ -20,7 +20,7 @@ export async function SignOut(formData: FormData) {
   console.log(pathName);
   const supabase = createClient();
   const { error } = await supabase.auth.signOut();
-  console.log(error);
+  console.log(1111);
   if (error) {
     return getErrorRedirect(
       pathName,
