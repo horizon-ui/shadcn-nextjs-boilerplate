@@ -28,7 +28,7 @@ export const routes: IRoute[] = [
   },
   {
     name: 'Profile Settings',
-    path: '/dashboard/settings',
+    path: '/shadcn-nextjs-boilerplate/dashboard/settings',
     icon: (
       <HiOutlineCog8Tooth className="-mt-[7px] h-4 w-4 stroke-2 text-inherit" />
     ),
