@@ -33,7 +33,7 @@ export async function signInWithOAuth(e: React.FormEvent<HTMLFormElement>) {
 
   // Create client-side supabase client and call signInWithOAuth
   const supabase = createClient();
-  const redirectURL = getURL('/auth/callback');
+  const redirectURL = getURL('/shadcn-nextjs-boilerplate/auth/callback');
   await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
