@@ -1,6 +1,7 @@
 ## [2.1.0] 2024-09-05
 
-### Added Settings page. ⚡️
+### Added Profile Settings page. ⚡️
+- Added a new Profile Settings page.
 
 ## [2.0.0] 2024-08-26
 
