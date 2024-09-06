@@ -17,7 +17,8 @@ export async function GET(request: NextRequest) {
     if (error) {
       return NextResponse.redirect(
         getErrorRedirect(
-          `${requestUrl.origin}/shadcn-nextjs-boilerplate/dashboard/signin`,
+          // `${requestUrl.origin}/shadcn-nextjs-boilerplate/dashboard/signin`,
+          `https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/signin`,
           error.name,
           "Sorry, we weren't able to log you in. Please try again."
         )
@@ -28,7 +29,8 @@ export async function GET(request: NextRequest) {
   // URL to redirect to after sign in process completes
   return NextResponse.redirect(
     getStatusRedirect(
-      `${requestUrl.origin}/shadcn-nextjs-boilerplate/dashboard/main`,
+      // `${requestUrl.origin}/shadcn-nextjs-boilerplate/dashboard/main`,
+      `https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/main`,
       'Success!',
       'You are now signed in.'
     )
