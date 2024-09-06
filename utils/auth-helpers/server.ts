@@ -17,10 +17,8 @@ export async function redirectToPath(path: string) {
 
 export async function SignOut(formData: FormData) {
   const pathName = String(formData.get('pathName')).trim();
-  console.log(pathName);
   const supabase = createClient();
   const { error } = await supabase.auth.signOut();
-  console.log(1111);
   if (error) {
     return getErrorRedirect(
       pathName,
