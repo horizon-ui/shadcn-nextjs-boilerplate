@@ -29,7 +29,7 @@ export async function SignOut(formData: FormData) {
     );
   }
 
-  return '/shadcn-nextjs-boilerplate/dashboard/signin';
+  return '/dashboard/signin';
 }
 
 export async function signInWithEmail(formData: FormData) {
@@ -320,19 +320,19 @@ export async function updateName(formData: FormData) {
 
   if (error) {
     return getErrorRedirect(
-      '/shadcn-nextjs-boilerplate/dashboard/settings',
+      '/dashboard/settings',
       'Your name could not be updated.',
       error.message
     );
   } else if (data.user) {
     return getStatusRedirect(
-      '/shadcn-nextjs-boilerplate/dashboard/settings',
+      '/dashboard/settings',
       'Success!',
       'Your name has been updated.'
     );
   } else {
     return getErrorRedirect(
-      '/shadcn-nextjs-boilerplate/dashboard/settings',
+      '/dashboard/settings',
       'Hmm... Something went wrong.',
       'Your name could not be updated.'
     );
