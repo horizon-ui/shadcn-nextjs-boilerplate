@@ -7,9 +7,7 @@ export default async function Dashboard() {
   const [user] = await Promise.all([getUser(supabase)]);
 
   if (!user) {
-    return redirect(
-      '/shadcn-nextjs-boilerplate/dashboard/signin'
-    );
+    return redirect('/shadcn-nextjs-boilerplate/dashboard/signin');
   } else {
     redirect('/shadcn-nextjs-boilerplate/dashboard/main');
   }
