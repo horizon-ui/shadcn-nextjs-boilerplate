@@ -34,7 +34,7 @@ export async function SignOut(formData: FormData) {
 
 export async function signInWithEmail(formData: FormData) {
   const cookieStore = cookies();
-  const callbackURL = getURL('/auth/callback');
+  const callbackURL = getURL('/shadcn-nextjs-boilerplate/auth/callback');
 
   const email = String(formData.get('email')).trim();
   let redirectPath: string;
@@ -87,7 +87,7 @@ export async function signInWithEmail(formData: FormData) {
 }
 
 export async function requestPasswordUpdate(formData: FormData) {
-  const callbackURL = getURL('/auth/reset_password');
+  const callbackURL = getURL('/shadcn-nextjs-boilerplate/auth/reset_password');
 
   // Get form data
   const email = String(formData.get('email')).trim();
@@ -164,7 +164,7 @@ export async function signInWithPassword(formData: FormData) {
 }
 
 export async function signUp(formData: FormData) {
-  const callbackURL = getURL('/auth/callback');
+  const callbackURL = getURL('/shadcn-nextjs-boilerplate/auth/callback');
 
   const email = String(formData.get('email')).trim();
   const password = String(formData.get('password')).trim();
@@ -320,19 +320,19 @@ export async function updateName(formData: FormData) {
 
   if (error) {
     return getErrorRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Your name could not be updated.',
       error.message
     );
   } else if (data.user) {
     return getStatusRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Success!',
       'Your name has been updated.'
     );
   } else {
     return getErrorRedirect(
-      '/dashboard/settings',
+      '/shadcn-nextjs-boilerplate/dashboard/settings',
       'Hmm... Something went wrong.',
       'Your name could not be updated.'
     );
