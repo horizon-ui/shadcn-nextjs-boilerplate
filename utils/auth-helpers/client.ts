@@ -18,6 +18,7 @@ export async function handleRequest(
 
   if (router) {
     // If client-side router is provided, use it to redirect
+    console.log(requestFunc)
     return router.push(redirectUrl);
   } else {
     // Otherwise, redirect server-side
