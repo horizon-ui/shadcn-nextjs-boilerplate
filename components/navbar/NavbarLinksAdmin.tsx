@@ -100,7 +100,7 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         className="w-full"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(SignOut);
+          console.log(router);
           handleRequest(e, SignOut, router);
         }}
       >
