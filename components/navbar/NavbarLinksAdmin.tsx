@@ -122,7 +122,7 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         onClick={(e) => {
           e.preventDefault();
           supabase.auth.signOut();
-          router.push('/');
+          router.push('/shadcn-nextjs-boilerplate/dashboard/signin');
         }}
         variant="outline"
         className="flex h-9 min-w-9 cursor-pointer rounded-full border-zinc-200 p-0 text-xl text-zinc-950 dark:border-zinc-800 dark:text-white md:min-h-10 md:min-w-10"
