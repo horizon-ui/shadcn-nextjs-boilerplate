@@ -8,13 +8,9 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { OpenContext, UserContext } from '@/contexts/layout';
-import { handleRequest } from '@/utils/auth-helpers/client';
-import { SignOut } from '@/utils/auth-helpers/server';
-// import SignOut from '@/utils/auth-helpers/client-helpers';
-// import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import { useTheme } from 'next-themes';
-import { usePathname, useRouter } from 'next/navigation';
-import React, { useContext, useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useContext } from 'react';
 import { FiAlignJustify } from 'react-icons/fi';
 import {
   HiOutlineMoon,
@@ -24,12 +20,6 @@ import {
 } from 'react-icons/hi2';
 import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import { createClient } from '@/utils/supabase/client';
-// import { createClient } from '@supabase/supabase-js';
-
-// const supabase = createClient(
-//   process.env.NEXT_PUBLIC_SUPABASE_URL,
-//   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-// );
 
 const supabase = createClient();
 export default function HeaderLinks(props: { [x: string]: any }) {
@@ -41,15 +31,6 @@ export default function HeaderLinks(props: { [x: string]: any }) {
     setOpen(false);
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault(); // Prevent form submission (client-side)
-  //   const { error } = await supabase.auth.signOut();
-  //   if (error) {
-  //     console.error('Error signing out:', error);
-  //   } else {
-  //     router.push('/shadcn-nextjs-boilerplate/dashboard/signin');
-  //   }
-  // };
   const handleSignOut = async (e) => {
     e.preventDefault();
     supabase.auth.signOut();
@@ -110,36 +91,13 @@ export default function HeaderLinks(props: { [x: string]: any }) {
           </a>
         </DropdownMenuContent>
       </DropdownMenu>
-      {/* <form onSubmit={handleSubmit}>
-        <Button
-          type="submit"
-          variant="outline"
-          className="flex h-9 min-w-9 cursor-pointer rounded-full border-zinc-200 p-0 text-xl text-zinc-950 dark:border-zinc-800 dark:text-white md:min-h-10 md:min-w-10"
-        >
-          <HiOutlineArrowRightOnRectangle className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white" />
-        </Button>
-      </form> */}
-
-      {/* <form onSubmit={(e) => handleRequest(e, SignOut, router)}>
-        <input type="hidden" name="pathName" value={usePathname()} /> */}
       <Button
-        // type="submit"
         onClick={(e) => handleSignOut(e)}
         variant="outline"
         className="flex h-9 min-w-9 cursor-pointer rounded-full border-zinc-200 p-0 text-xl text-zinc-950 dark:border-zinc-800 dark:text-white md:min-h-10 md:min-w-10"
       >
         <HiOutlineArrowRightOnRectangle className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white" />
       </Button>
-      {/* </form> */}
-      {/* <form
-        className="w-full"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleRequest(e, SignOut, router);
-        }}
-      >
-        <input type="hidden" name="pathName" value={usePathname()} />
-      </form> */}
       <a
         className="w-full"
         href="/shadcn-nextjs-boilerplate/dashboard/settings"
