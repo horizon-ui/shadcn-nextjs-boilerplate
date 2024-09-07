@@ -14,8 +14,7 @@ import SignOut from '@/utils/auth-helpers/client-helpers';
 // import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { useContext } from 'react';
-import { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { FiAlignJustify } from 'react-icons/fi';
 import {
   HiOutlineMoon,
@@ -124,7 +123,6 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         className="w-full"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(handleRequest);
           handleRequest(e, SignOut, router);
         }}
       >

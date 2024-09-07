@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { ComponentType, ReactNode } from 'react';
+import { ComponentType } from 'react';
 
 export type OpenAIModel =
   | 'gpt-3.5-turbo'
