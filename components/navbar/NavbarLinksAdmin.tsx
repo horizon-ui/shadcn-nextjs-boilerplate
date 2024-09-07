@@ -33,18 +33,10 @@ export default function HeaderLinks(props: { [x: string]: any }) {
   const { open, setOpen } = useContext(OpenContext);
   const user = useContext(UserContext);
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const onOpen = () => {
     setOpen(false);
   };
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault(); // Prevent form submission (client-side)
