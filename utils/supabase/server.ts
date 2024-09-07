@@ -1,34 +1,29 @@
-import { createServerClient, type CookieMethodsServer } from '@supabase/ssr';
+import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import { Database } from '@/types/types_db';
 
-// Define a function to create a Supabase client for server-side operations
-// The function takes a cookie store created with next/headers cookies as an argument
 export const createClient = () => {
   const cookieStore = cookies();
-  return createServerClient<Database>(
-    // Pass Supabase URL and anonymous key from the environment to the client
+
+  return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-
-    // Define a cookies object with methods for interacting with the cookie store and pass it to the client
     {
       cookies: {
-        // The getAll method is used to cookies by name
         getAll() {
-          return cookieStore.getAll()
+          return cookieStore.getAll();
         },
-        // The setAll method is used to cookies with a given name, value, and options
         setAll(cookiesToSet) {
           try {
-            cookiesToSet.forEach(({ name, value }) => cookieStore.set(name, value))
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, options);
+            });
           } catch (error) {
-            // If the set method is called from a Server Component, an error may occur
-            // This can be ignored if there is middleware refreshing user sessions
+            // The `set` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing
+            // user sessions.
           }
-        },
-        // The remove method is used to delete a cookie by its name 
-      } as CookieMethodsServer
+        }
+      }
     }
   );
 };
