@@ -9,8 +9,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { OpenContext, UserContext } from '@/contexts/layout';
 import { handleRequest } from '@/utils/auth-helpers/client';
-import { SignOut } from '@/utils/auth-helpers/server';
-// import SignOut from '@/utils/auth-helpers/client-helpers';
+// import { SignOut } from '@/utils/auth-helpers/server';
+import SignOut from '@/utils/auth-helpers/client-helpers';
 import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
@@ -96,7 +96,7 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <form
+      {/* <form
         className="w-full"
         onSubmit={(e) => {
           e.preventDefault();
@@ -112,7 +112,8 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         >
           <HiOutlineArrowRightOnRectangle className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white" />
         </Button>
-      </form>
+      </form> */}
+      <SignOut />
       <a
         className="w-full"
         href="/shadcn-nextjs-boilerplate/dashboard/settings"
