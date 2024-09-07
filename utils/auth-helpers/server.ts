@@ -17,8 +17,10 @@ export async function redirectToPath(path: string) {
 
 export async function SignOut(formData: FormData) {
   const pathName = String(formData.get('pathName')).trim();
+
   const supabase = createClient();
   const { error } = await supabase.auth.signOut();
+
   if (error) {
     return getErrorRedirect(
       pathName,
@@ -27,7 +29,7 @@ export async function SignOut(formData: FormData) {
     );
   }
 
-  return '/shadcn-nextjs-boilerplate/dashboard/signin';
+  return '/signin';
 }
 
 export async function signInWithEmail(formData: FormData) {

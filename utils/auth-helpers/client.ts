@@ -7,7 +7,7 @@ import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.share
 
 export async function handleRequest(
   e: React.FormEvent<HTMLFormElement>,
-  requestFunc: (any) | ((formData: FormData) => Promise<string>),
+  requestFunc: (formData: FormData) => Promise<string>,
   router: AppRouterInstance | null = null
 ): Promise<boolean | void> {
   // Prevent default form submission refresh
@@ -17,7 +17,7 @@ export async function handleRequest(
   const redirectUrl: string = await requestFunc(formData);
 
   if (router) {
-    // If client-side router is provided, use it to redirect 
+    // If client-side router is provided, use it to redirect
     return router.push(redirectUrl);
   } else {
     // Otherwise, redirect server-side

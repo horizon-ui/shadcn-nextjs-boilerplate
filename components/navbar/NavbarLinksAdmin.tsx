@@ -9,8 +9,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { OpenContext, UserContext } from '@/contexts/layout';
 import { handleRequest } from '@/utils/auth-helpers/client';
-// import { SignOut } from '@/utils/auth-helpers/server';
-import SignOut from '@/utils/auth-helpers/client-helpers';
+import { SignOut } from '@/utils/auth-helpers/server';
+// import SignOut from '@/utils/auth-helpers/client-helpers';
 // import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
@@ -22,6 +22,7 @@ import {
   HiOutlineInformationCircle,
   HiOutlineArrowRightOnRectangle
 } from 'react-icons/hi2';
+import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 // import { createClient } from '@supabase/supabase-js';
 
 // const supabase = createClient(
@@ -33,7 +34,7 @@ export default function HeaderLinks(props: { [x: string]: any }) {
   const { open, setOpen } = useContext(OpenContext);
   const user = useContext(UserContext);
   const { theme, setTheme } = useTheme();
-  const router = useRouter();
+  const router = getRedirectMethod() === 'client' ? useRouter() : null;
   const onOpen = () => {
     setOpen(false);
   };
@@ -111,7 +112,18 @@ export default function HeaderLinks(props: { [x: string]: any }) {
           <HiOutlineArrowRightOnRectangle className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white" />
         </Button>
       </form> */}
-      <form
+
+      <form onSubmit={(e) => handleRequest(e, SignOut, router)}>
+        <input type="hidden" name="pathName" value={usePathname()} />
+        <button
+          type="submit"
+          // variant="outline"
+          className="flex h-9 min-w-9 cursor-pointer rounded-full border-zinc-200 p-0 text-xl text-zinc-950 dark:border-zinc-800 dark:text-white md:min-h-10 md:min-w-10"
+        >
+          <HiOutlineArrowRightOnRectangle className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white" />
+        </button>
+      </form>
+      {/* <form
         className="w-full"
         onSubmit={(e) => {
           e.preventDefault();
@@ -119,14 +131,7 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         }}
       >
         <input type="hidden" name="pathName" value={usePathname()} />
-        <Button
-          type="submit"
-          variant="outline"
-          className="flex h-9 min-w-9 cursor-pointer rounded-full border-zinc-200 p-0 text-xl text-zinc-950 dark:border-zinc-800 dark:text-white md:min-h-10 md:min-w-10"
-        >
-          <HiOutlineArrowRightOnRectangle className="h-4 w-4 stroke-2 text-zinc-950 dark:text-white" />
-        </Button>
-      </form>
+      </form> */}
       <a
         className="w-full"
         href="/shadcn-nextjs-boilerplate/dashboard/settings"
