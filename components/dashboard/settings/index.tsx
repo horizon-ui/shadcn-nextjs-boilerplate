@@ -5,11 +5,8 @@
 import DashboardLayout from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Database } from '@/types/types_db';
-import { updateName, updateEmail } from '@/utils/auth-helpers/server';
 import { User } from '@supabase/supabase-js';
 import { useState } from 'react';
-import { handleRequest } from '@/utils/auth-helpers/client';
 import { useRouter } from 'next/navigation';
 import Notification from './components/notification';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
@@ -17,6 +14,7 @@ import { Switch } from '@/components/ui/switch';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { HiOutlineCheck } from 'react-icons/hi';
 import { createClient } from '@/utils/supabase/client';
+import { getURL, getStatusRedirect } from '@/utils/helpers';
 
 interface Props {
   user: User | null | undefined;
@@ -42,7 +40,23 @@ export default function Settings(props: Props) {
       setIsSubmitting(false);
       return;
     }
-    handleRequest(e, updateEmail, router);
+    // Get form data
+    const newEmail = e.currentTarget.newEmail.value.trim();
+    const callbackUrl = getURL(
+      getStatusRedirect(
+        '/shadcn-nextjs-boilerplate/dashboard/settings',
+        'Success!',
+        `Your email has been updated.`
+      )
+    );
+    e.preventDefault();
+    const { error } = await supabase.auth.updateUser(
+      { email: newEmail },
+      {
+        emailRedirectTo: callbackUrl
+      }
+    );
+    router.push('/shadcn-nextjs-boilerplate/dashboard/settings');
     setIsSubmitting(false);
   };
 
@@ -54,13 +68,6 @@ export default function Settings(props: Props) {
       setIsSubmitting(false);
       return;
     }
-    // Get form data
-    // Check if the new name is the same as the old name
-    if (e.currentTarget.fullName.value === props.user.user_metadata.full_name) {
-      setIsSubmitting(false);
-      return;
-    }
-
     // Get form data
     const fullName = e.currentTarget.fullName.value.trim();
     e.preventDefault();
