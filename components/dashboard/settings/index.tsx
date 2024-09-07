@@ -16,25 +16,14 @@ import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { Switch } from '@/components/ui/switch';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { HiOutlineCheck } from 'react-icons/hi';
-
-type Subscription = Database['public']['Tables']['subscriptions']['Row'];
-type Product = Database['public']['Tables']['products']['Row'];
-type Price = Database['public']['Tables']['prices']['Row'];
-interface ProductWithPrices extends Product {
-  prices: Price[];
-}
-interface PriceWithProduct extends Price {
-  products: Product | null;
-}
-interface SubscriptionWithProduct extends Subscription {
-  prices: PriceWithProduct | null;
-}
+import { createClient } from '@/utils/supabase/client';
 
 interface Props {
   user: User | null | undefined;
   userDetails: { [x: string]: any } | null;
 }
 
+const supabase = createClient();
 export default function Settings(props: Props) {
   // Input States
   const [nameError, setNameError] = useState<{
@@ -65,7 +54,20 @@ export default function Settings(props: Props) {
       setIsSubmitting(false);
       return;
     }
-    handleRequest(e, updateName, router);
+    // Get form data
+    // Check if the new name is the same as the old name
+    if (e.currentTarget.fullName.value === props.user.user_metadata.full_name) {
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Get form data
+    const fullName = e.currentTarget.fullName.value.trim();
+    e.preventDefault();
+    supabase.auth.updateUser({
+      data: { full_name: fullName }
+    });
+    router.push('/shadcn-nextjs-boilerplate/dashboard/settings');
     setIsSubmitting(false);
   };
 
