@@ -50,6 +50,11 @@ export default function HeaderLinks(props: { [x: string]: any }) {
   //     router.push('/shadcn-nextjs-boilerplate/dashboard/signin');
   //   }
   // };
+  const handleSignOut = async (e) => {
+    e.preventDefault();
+    supabase.auth.signOut();
+    router.push('/shadcn-nextjs-boilerplate/dashboard/signin');
+  };
 
   return (
     <div className="relative flex min-w-max max-w-max flex-grow items-center justify-around gap-1 rounded-lg md:px-2 md:py-2 md:pl-3 xl:gap-2">
@@ -119,11 +124,7 @@ export default function HeaderLinks(props: { [x: string]: any }) {
         <input type="hidden" name="pathName" value={usePathname()} /> */}
       <Button
         // type="submit"
-        onClick={(e) => {
-          e.preventDefault();
-          supabase.auth.signOut();
-          router.push('/shadcn-nextjs-boilerplate/dashboard/signin');
-        }}
+        onClick={(e) => handleSignOut(e)}
         variant="outline"
         className="flex h-9 min-w-9 cursor-pointer rounded-full border-zinc-200 p-0 text-xl text-zinc-950 dark:border-zinc-800 dark:text-white md:min-h-10 md:min-w-10"
       >
