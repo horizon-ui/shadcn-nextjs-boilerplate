@@ -7,7 +7,7 @@ import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.share
 
 export async function handleRequest(
   e: React.FormEvent<HTMLFormElement>,
-  requestFunc: (formData: FormData) => Promise<string>,
+  requestFunc: (any) | ((formData: FormData) => Promise<string>),
   router: AppRouterInstance | null = null
 ): Promise<boolean | void> {
   // Prevent default form submission refresh
