@@ -23,13 +23,13 @@ export async function SignOut(formData: FormData) {
 
   if (error) {
     return getErrorRedirect(
-      pathName,
+      'https://horizon-ui.com/shadcn-nextjs-boilerplate/dashboard/settings',
       'Hmm... Something went wrong.',
       'You could not be signed out.'
     );
   }
 
-  return '/signin';
+  return '/shadcn-nextjs-boilerplate/dashboard/signin';
 }
 
 export async function signInWithEmail(formData: FormData) {
