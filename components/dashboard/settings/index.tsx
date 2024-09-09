@@ -28,6 +28,7 @@ export default function Settings(props: Props) {
     status: boolean;
     message: string;
   }>();
+  console.log(props.user);
   console.log(props.userDetails);
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -70,6 +71,14 @@ export default function Settings(props: Props) {
     }
     // Get form data
     const fullName = e.currentTarget.fullName.value.trim();
+
+    const { error } = await supabase
+      .from('users')
+      .update({ full_name: fullName })
+      .eq('id', props.user?.id);
+    if (error) {
+      console.log(error);
+    }
     e.preventDefault();
     supabase.auth.updateUser({
       data: { full_name: fullName }
@@ -143,7 +152,8 @@ export default function Settings(props: Props) {
                 <input
                   type="text"
                   name="fullName"
-                  defaultValue={'y'}
+                  // defaultValue={props.user?.user_metadata.full_name ?? ''}
+                  defaultValue={props.userDetails?.full_name ?? ''}
                   placeholder="Please enter your full name"
                   className={`mb-2 mr-4 flex h-full w-full items-center justify-center rounded-lg border border-zinc-200 bg-white/0 px-4 py-4 text-zinc-950 outline-none dark:!border-white/10 dark:text-white md:mb-0`}
                 />
