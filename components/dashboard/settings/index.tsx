@@ -13,7 +13,7 @@ import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { Switch } from '@/components/ui/switch';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { HiOutlineCheck } from 'react-icons/hi';
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from '@/utils/supabase/client';
 import { getURL, getStatusRedirect } from '@/utils/helpers';
 
 interface Props {
