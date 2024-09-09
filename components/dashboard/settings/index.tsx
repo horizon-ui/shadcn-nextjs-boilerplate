@@ -28,7 +28,7 @@ export default function Settings(props: Props) {
     status: boolean;
     message: string;
   }>();
-
+  console.log(props.user);
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
