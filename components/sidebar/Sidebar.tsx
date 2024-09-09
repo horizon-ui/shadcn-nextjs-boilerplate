@@ -37,8 +37,9 @@ function Sidebar(props: SidebarProps) {
   // SIDEBAR
   return (
     <div
-      className={`lg:!z-99 fixed !z-[99] min-h-full w-[300px] transition-all md:!z-[99] xl:!z-0 ${props.variant === 'auth' ? 'xl:hidden' : 'xl:block'
-        } ${props.open ? '' : '-translate-x-[120%] xl:translate-x-[unset]'}`}
+      className={`lg:!z-99 fixed !z-[99] min-h-full w-[300px] transition-all md:!z-[99] xl:!z-0 ${
+        props.variant === 'auth' ? 'xl:hidden' : 'xl:block'
+      } ${props.open ? '' : '-translate-x-[120%] xl:translate-x-[unset]'}`}
     >
       <Card
         className={`m-3 ml-3 h-[96.5vh] w-full overflow-hidden !rounded-lg border-zinc-200 pe-4 dark:border-zinc-800 sm:my-4 sm:mr-4 md:m-5 md:mr-[-50px]`}
@@ -96,9 +97,9 @@ function Sidebar(props: SidebarProps) {
                 </a>
                 <a href="/shadcn-nextjs-boilerplate/dashboard/settings">
                   <p className="ml-2 mr-3 flex items-center text-sm font-semibold leading-none text-zinc-950 dark:text-white">
-                    {user?.user_metadata.full_name
-                      ? user?.user_metadata.full_name
-                      : `User`}
+                    {userDetails?.full_name ||
+                      user?.user_metadata?.full_name ||
+                      'User'}
                   </p>
                 </a>
                 <form
