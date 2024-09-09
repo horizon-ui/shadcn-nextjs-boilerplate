@@ -13,7 +13,7 @@ import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { Switch } from '@/components/ui/switch';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { HiOutlineCheck } from 'react-icons/hi';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/utils/supabase/server';
 import { getURL, getStatusRedirect } from '@/utils/helpers';
 
 interface Props {
@@ -60,23 +60,23 @@ export default function Settings(props: Props) {
     setIsSubmitting(false);
   };
 
-  // const handleSubmitName = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   setIsSubmitting(true);
-  //   // Check if the new name is the same as the old name
-  //   if (e.currentTarget.fullName.value === props.user.user_metadata.full_name) {
-  //     e.preventDefault();
-  //     setIsSubmitting(false);
-  //     return;
-  //   }
-  //   // Get form data
-  //   const fullName = e.currentTarget.fullName.value.trim();
-  //   e.preventDefault();
-  //   supabase.auth.updateUser({
-  //     data: { full_name: fullName }
-  //   });
-  //   router.push('/shadcn-nextjs-boilerplate/dashboard/settings');
-  //   setIsSubmitting(false);
-  // };
+  const handleSubmitName = async (e: React.FormEvent<HTMLFormElement>) => {
+    setIsSubmitting(true);
+    // Check if the new name is the same as the old name
+    if (e.currentTarget.fullName.value === props.user.user_metadata.full_name) {
+      e.preventDefault();
+      setIsSubmitting(false);
+      return;
+    }
+    // Get form data
+    const fullName = e.currentTarget.fullName.value.trim();
+    e.preventDefault();
+    supabase.auth.updateUser({
+      data: { full_name: fullName }
+    });
+    router.push('/shadcn-nextjs-boilerplate/dashboard/settings');
+    setIsSubmitting(false);
+  };
 
   const notifications = [
     { message: 'Your call has been confirmed.', time: '1 hour ago' },
@@ -134,7 +134,7 @@ export default function Settings(props: Props) {
                 (30 characters maximum)
               </p>
             </label>
-            {/* <div className="mb-8 flex flex-col md:flex-row">
+            <div className="mb-8 flex flex-col md:flex-row">
               <form
                 className="w-full"
                 id="nameForm"
@@ -156,7 +156,7 @@ export default function Settings(props: Props) {
                 Update name
               </Button>
               <div className="mt-8 h-px w-full max-w-[90%] self-center bg-zinc-200 dark:bg-white/10 md:mt-0 md:hidden" />
-            </div> */}
+            </div>
             <p
               className={`mb-5 px-2.5 text-red-500 md:px-9 ${
                 nameError?.status ? 'block' : 'hidden'
