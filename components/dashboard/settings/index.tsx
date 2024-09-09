@@ -96,6 +96,7 @@ export default function Settings(props: Props) {
   return (
     <DashboardLayout
       user={props.user}
+      userDetails={props.userDetails}
       title="Account Settings"
       description="Profile settings."
     >

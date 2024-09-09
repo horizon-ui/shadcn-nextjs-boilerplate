@@ -34,6 +34,7 @@ export default function Settings(props: Props) {
   return (
     <DashboardLayout
       user={props.user}
+      userDetails={props.userDetails}
       title="Subscription Page"
       description="Manage your subscriptions"
     >

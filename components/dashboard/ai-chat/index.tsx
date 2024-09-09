@@ -127,6 +127,7 @@ export default function Chat(props: Props) {
   return (
     <DashboardLayout
       user={props.user}
+      userDetails={props.userDetails}
       title="AI Generator"
       description="AI Generator"
     >
