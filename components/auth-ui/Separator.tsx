@@ -1,7 +1,3 @@
-interface SeparatorProps {
-  text: string;
-}
-
 export default function Separator(props: { text?: string }) {
   const { text } = props;
   return (

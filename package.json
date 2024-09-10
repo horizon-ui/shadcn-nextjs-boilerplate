@@ -1,6 +1,6 @@
 {
   "name": "shadcn-nextjs-boilerplate",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "private": true,
   "scripts": {
     "init": "npm install && npx shadcn@latest add --all",

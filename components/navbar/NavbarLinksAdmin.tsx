@@ -8,11 +8,9 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { OpenContext, UserContext } from '@/contexts/layout';
-import { handleRequest } from '@/utils/auth-helpers/client';
-import { SignOut } from '@/utils/auth-helpers/server';
 import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import { useTheme } from 'next-themes';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import React, { useContext } from 'react';
 import { FiAlignJustify } from 'react-icons/fi';
 import {

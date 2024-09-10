@@ -1,3 +1,8 @@
+## [2.1.1] 2024-09-10
+
+### Signout fixed ⚡️
+- Fixed a bug where you couldn't sign out or change name in Supabase.
+
 ## [2.1.0] 2024-09-05
 
 ### Added Profile Settings page. ⚡️

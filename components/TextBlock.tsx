@@ -7,7 +7,7 @@ interface Props {
 export const TextBlock: React.FC<Props> = ({
   text,
   editable = false,
-  onChange = () => {},
+  onChange = () => {}
 }) => {
   return (
     <textarea

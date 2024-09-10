@@ -73,7 +73,6 @@ export default function RootLayout({
       <body id={'root'} className="loading bg-white">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SupabaseProvider>
-            {/* @ts-ignore */}
             <main id="skip">{children}</main>
           </SupabaseProvider>
         </ThemeProvider>

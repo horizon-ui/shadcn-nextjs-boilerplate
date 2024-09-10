@@ -13,7 +13,7 @@ type SupabaseContext = {
 const Context = createContext<SupabaseContext | undefined>(undefined);
 
 export default function SupabaseProvider({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -22,7 +22,7 @@ export default function SupabaseProvider({
 
   useEffect(() => {
     const {
-      data: { subscription },
+      data: { subscription }
     } = supabase.auth.onAuthStateChange((event) => {
       if (event === 'SIGNED_IN') router.refresh();
     });

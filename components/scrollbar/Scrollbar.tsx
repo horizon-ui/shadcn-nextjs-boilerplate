@@ -10,7 +10,7 @@ export const renderTrack = ({ style, ...props }: any) => {
     bottom: 2,
     top: 2,
     borderRadius: 3,
-    right: 0,
+    right: 0
   };
   return (
     <div style={{ ...style, ...trackStyle }} className="xl:pr-3.5" {...props} />
@@ -18,14 +18,14 @@ export const renderTrack = ({ style, ...props }: any) => {
 };
 export const renderThumb = ({ style, ...props }: any) => {
   const thumbStyle = {
-    borderRadius: 15,
+    borderRadius: 15
   };
   return <div style={{ ...style, ...thumbStyle }} {...props} />;
 };
 export const renderView = ({ style, ...props }: any) => {
   const viewStyle = {
     width: '100%',
-    marginBottom: -22,
+    marginBottom: -22
   };
   return (
     <div

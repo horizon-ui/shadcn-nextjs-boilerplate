@@ -8,7 +8,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from '@/components/ui/table';
 import {
   PaginationState,
@@ -22,7 +22,7 @@ import {
   getFacetedMinMaxValues,
   getPaginationRowModel,
   getSortedRowModel,
-  flexRender,
+  flexRender
 } from '@tanstack/react-table';
 import React from 'react';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
@@ -40,7 +40,7 @@ type RowObj = {
 function CheckTable(props: { tableData: any }) {
   const { tableData } = props;
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    [],
+    []
   );
   let defaultData = tableData;
   const [globalFilter, setGlobalFilter] = React.useState('');
@@ -65,7 +65,7 @@ function CheckTable(props: { tableData: any }) {
         <div className="flex max-w-max items-center">
           <Checkbox defaultChecked={info.getValue()[1]} />
         </div>
-      ),
+      )
     }),
     columnHelper.accessor('email', {
       id: 'email',
@@ -78,7 +78,7 @@ function CheckTable(props: { tableData: any }) {
         <p className="text-sm font-medium text-zinc-950 dark:text-white">
           {info.getValue()}
         </p>
-      ),
+      )
     }),
     columnHelper.accessor('provider', {
       id: 'provider',
@@ -93,7 +93,7 @@ function CheckTable(props: { tableData: any }) {
             {info.getValue()}
           </p>
         </div>
-      ),
+      )
     }),
     columnHelper.accessor('created', {
       id: 'created',
@@ -108,7 +108,7 @@ function CheckTable(props: { tableData: any }) {
             {info.getValue()}
           </p>
         </div>
-      ),
+      )
     }),
     columnHelper.accessor('lastsigned', {
       id: 'lastsigned',
@@ -121,7 +121,7 @@ function CheckTable(props: { tableData: any }) {
         <p className="text-sm font-medium text-zinc-950 dark:text-white">
           {info.getValue()}
         </p>
-      ),
+      )
     }),
     columnHelper.accessor('uuid', {
       id: 'uuid',
@@ -134,29 +134,30 @@ function CheckTable(props: { tableData: any }) {
         <p className="text-sm font-medium text-zinc-950 dark:text-white">
           {info.getValue()}
         </p>
-      ),
+      )
     }),
     columnHelper.accessor('menu', {
       id: 'menu',
       header: () => (
         <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-400"></p>
       ),
-      cell: (info) => <CardMenu vertical={true} />,
-    }),
+      cell: (info) => <CardMenu vertical={true} />
+    })
   ]; // eslint-disable-next-line
   const [data, setData] = React.useState(() => [...defaultData]);
-  const [{ pageIndex, pageSize }, setPagination] =
-    React.useState<PaginationState>({
-      pageIndex: 0,
-      pageSize: 11,
-    });
+  const [{ pageIndex, pageSize }, setPagination] = React.useState<
+    PaginationState
+  >({
+    pageIndex: 0,
+    pageSize: 11
+  });
 
   const pagination = React.useMemo(
     () => ({
       pageIndex,
-      pageSize,
+      pageSize
     }),
-    [pageIndex, pageSize],
+    [pageIndex, pageSize]
   );
   const table = useReactTable({
     data,
@@ -164,7 +165,7 @@ function CheckTable(props: { tableData: any }) {
     state: {
       columnFilters,
       globalFilter,
-      pagination,
+      pagination
     },
     onPaginationChange: setPagination,
     onColumnFiltersChange: setColumnFilters,
@@ -178,7 +179,7 @@ function CheckTable(props: { tableData: any }) {
     getFacetedMinMaxValues: getFacetedMinMaxValues(),
     debugTable: true,
     debugHeaders: true,
-    debugColumns: false,
+    debugColumns: false
   });
 
   return (
@@ -205,11 +206,11 @@ function CheckTable(props: { tableData: any }) {
                     >
                       {flexRender(
                         header.column.columnDef.header,
-                        header.getContext(),
+                        header.getContext()
                       )}
                       {{
                         asc: '',
-                        desc: '',
+                        desc: ''
                       }[header.column.getIsSorted() as string] ?? null}
                     </TableHead>
                   );
@@ -235,7 +236,7 @@ function CheckTable(props: { tableData: any }) {
                         >
                           {flexRender(
                             cell.column.columnDef.cell,
-                            cell.getContext(),
+                            cell.getContext()
                           )}
                         </TableCell>
                       );

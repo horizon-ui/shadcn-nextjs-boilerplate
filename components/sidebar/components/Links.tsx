@@ -14,7 +14,7 @@ interface SidebarLinksProps extends PropsWithChildren {
 export function SidebarLinks(props: SidebarLinksProps) {
   const pathname = usePathname();
 
-  const { routes, onOpen } = props;
+  const { routes } = props;
 
   // verifies if routeName is the one active (in browser input)
   const activeRoute = useCallback(

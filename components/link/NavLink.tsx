@@ -13,9 +13,9 @@ function NavLink({ className, children, styles, borderRadius, ...props }: any) {
   const memoizedStyles = useMemo(
     () => ({
       borderRadius: borderRadius || 0,
-      ...styles,
+      ...styles
     }),
-    [borderRadius, styles],
+    [borderRadius, styles]
   );
 
   return (
