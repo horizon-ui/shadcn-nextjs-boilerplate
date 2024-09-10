@@ -5,43 +5,31 @@
 import DashboardLayout from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Database } from '@/types/types_db';
-import { updateName, updateEmail } from '@/utils/auth-helpers/server';
 import { User } from '@supabase/supabase-js';
 import { useState } from 'react';
-import { handleRequest } from '@/utils/auth-helpers/client';
 import { useRouter } from 'next/navigation';
 import Notification from './components/notification';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { Switch } from '@/components/ui/switch';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { HiOutlineCheck } from 'react-icons/hi';
-
-type Subscription = Database['public']['Tables']['subscriptions']['Row'];
-type Product = Database['public']['Tables']['products']['Row'];
-type Price = Database['public']['Tables']['prices']['Row'];
-interface ProductWithPrices extends Product {
-  prices: Price[];
-}
-interface PriceWithProduct extends Price {
-  products: Product | null;
-}
-interface SubscriptionWithProduct extends Subscription {
-  prices: PriceWithProduct | null;
-}
+import { createClient } from '@/utils/supabase/client';
+import { getURL, getStatusRedirect } from '@/utils/helpers';
 
 interface Props {
   user: User | null | undefined;
   userDetails: { [x: string]: any } | null;
 }
 
+const supabase = createClient();
 export default function Settings(props: Props) {
   // Input States
   const [nameError, setNameError] = useState<{
     status: boolean;
     message: string;
   }>();
-
+  console.log(props.user);
+  console.log(props.userDetails);
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -53,7 +41,23 @@ export default function Settings(props: Props) {
       setIsSubmitting(false);
       return;
     }
-    handleRequest(e, updateEmail, router);
+    // Get form data
+    const newEmail = e.currentTarget.newEmail.value.trim();
+    const callbackUrl = getURL(
+      getStatusRedirect(
+        '/dashboard/settings',
+        'Success!',
+        `Your email has been updated.`
+      )
+    );
+    e.preventDefault();
+    const { error } = await supabase.auth.updateUser(
+      { email: newEmail },
+      {
+        emailRedirectTo: callbackUrl
+      }
+    );
+    router.push('/dashboard/settings');
     setIsSubmitting(false);
   };
 
@@ -65,7 +69,21 @@ export default function Settings(props: Props) {
       setIsSubmitting(false);
       return;
     }
-    handleRequest(e, updateName, router);
+    // Get form data
+    const fullName = e.currentTarget.fullName.value.trim();
+
+    const { error } = await supabase
+      .from('users')
+      .update({ full_name: fullName })
+      .eq('id', props.user?.id);
+    if (error) {
+      console.log(error);
+    }
+    e.preventDefault();
+    supabase.auth.updateUser({
+      data: { full_name: fullName }
+    });
+    router.push('/dashboard/settings');
     setIsSubmitting(false);
   };
 
@@ -78,6 +96,7 @@ export default function Settings(props: Props) {
   return (
     <DashboardLayout
       user={props.user}
+      userDetails={props.userDetails}
       title="Account Settings"
       description="Profile settings."
     >
@@ -134,7 +153,8 @@ export default function Settings(props: Props) {
                 <input
                   type="text"
                   name="fullName"
-                  defaultValue={props.user?.user_metadata.full_name ?? ''}
+                  // defaultValue={props.user?.user_metadata.full_name ?? ''}
+                  defaultValue={props.userDetails?.full_name ?? ''}
                   placeholder="Please enter your full name"
                   className={`mb-2 mr-4 flex h-full w-full items-center justify-center rounded-lg border border-zinc-200 bg-white/0 px-4 py-4 text-zinc-950 outline-none dark:!border-white/10 dark:text-white md:mb-0`}
                 />

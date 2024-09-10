@@ -16,21 +16,13 @@ import { ChatBody, OpenAIModel } from '@/types/types';
 import { Database } from '@/types/types_db';
 import { User } from '@supabase/supabase-js';
 import { useTheme } from 'next-themes';
-import Image from 'next/image';
 import { useState } from 'react';
 import { HiUser, HiSparkles, HiMiniPencilSquare } from 'react-icons/hi2';
 
-type Subscription = Database['public']['Tables']['subscriptions']['Row'];
 type Product = Database['public']['Tables']['products']['Row'];
 type Price = Database['public']['Tables']['prices']['Row'];
-interface ProductWithPrices extends Product {
-  prices: Price[];
-}
 interface PriceWithProduct extends Price {
   products: Product | null;
-}
-interface SubscriptionWithProduct extends Subscription {
-  prices: PriceWithProduct | null;
 }
 
 interface Props {
@@ -135,11 +127,12 @@ export default function Chat(props: Props) {
   return (
     <DashboardLayout
       user={props.user}
+      userDetails={props.userDetails}
       title="AI Generator"
       description="AI Generator"
     >
       <div className="relative flex w-full flex-col pt-[20px] md:pt-0">
-        <Image
+        <img
           width="340"
           height="181"
           src={theme === 'dark' ? Bgdark.src : Bg.src}
@@ -149,28 +142,33 @@ export default function Chat(props: Props) {
         <div className="mx-auto flex min-h-[75vh] w-full max-w-[1000px] flex-col xl:min-h-[85vh]">
           {/* Model Change */}
           <div
-            className={`flex w-full flex-col ${outputCode ? 'mb-5' : 'mb-auto'
-              }`}
+            className={`flex w-full flex-col ${
+              outputCode ? 'mb-5' : 'mb-auto'
+            }`}
           >
             <div className="z-[2] mx-auto mb-5 flex w-max rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800">
               <div
-                className={`flex cursor-pointer items-center justify-center py-2 transition-all duration-75 ${model === 'gpt-3.5-turbo'
+                className={`flex cursor-pointer items-center justify-center py-2 transition-all duration-75 ${
+                  model === 'gpt-3.5-turbo'
                     ? 'bg-white dark:bg-zinc-950'
                     : 'transparent'
-                  } h-[70xp] w-[174px]
-       ${model === 'gpt-3.5-turbo' ? '' : ''
-                  } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
+                } h-[70xp] w-[174px]
+       ${
+         model === 'gpt-3.5-turbo' ? '' : ''
+       } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
                 onClick={() => setModel('gpt-3.5-turbo')}
               >
                 GPT-3.5
               </div>
               <div
-                className={`flex cursor-pointer items-center justify-center py-2 transition-colors duration-75 ${model === 'gpt-4-1106-preview'
+                className={`flex cursor-pointer items-center justify-center py-2 transition-colors duration-75 ${
+                  model === 'gpt-4-1106-preview'
                     ? 'bg-white dark:bg-zinc-950'
                     : 'transparent'
-                  } h-[70xp] w-[174px]
-       ${model === 'gpt-4-1106-preview' ? '' : ''
-                  } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
+                } h-[70xp] w-[174px]
+       ${
+         model === 'gpt-4-1106-preview' ? '' : ''
+       } rounded-lg text-base font-semibold text-zinc-950 dark:text-white`}
                 onClick={() => setModel('gpt-4-1106-preview')}
               >
                 GPT-4
@@ -199,8 +197,9 @@ export default function Chat(props: Props) {
           </div>
           {/* Main Box */}
           <div
-            className={`mx-auto flex w-full flex-col ${outputCode ? 'flex' : 'hidden'
-              } mb-auto`}
+            className={`mx-auto flex w-full flex-col ${
+              outputCode ? 'flex' : 'hidden'
+            } mb-auto`}
           >
             <div className="mb-2.5 flex w-full items-center text-center">
               <div className="mr-5 flex h-[40px] min-h-[40px] min-w-[40px] items-center justify-center rounded-full border border-zinc-200 bg-transparent dark:border-transparent dark:bg-white">

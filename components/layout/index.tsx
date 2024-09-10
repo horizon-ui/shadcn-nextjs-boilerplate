@@ -18,6 +18,7 @@ interface Props {
   title: string;
   description: string;
   user: User | null | undefined;
+  userDetails: User | null | undefined | any;
 }
 
 const DashboardLayout: React.FC<Props> = (props: Props) => {
@@ -26,7 +27,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
 
   return (
     <UserContext.Provider value={props.user}>
-      <UserDetailsContext.Provider value={props.user}>
+      <UserDetailsContext.Provider value={props.userDetails}>
         <OpenContext.Provider value={{ open, setOpen }}>
           <div className="dark:bg-background-900 flex h-full w-full bg-white">
             <Toaster />

@@ -1,5 +1,4 @@
-'use client';
-
+'use client'
 import { createClient } from '@/utils/supabase/client';
 import { type Provider } from '@supabase/supabase-js';
 import { getURL } from '@/utils/helpers';
