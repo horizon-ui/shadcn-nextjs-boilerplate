@@ -5,6 +5,7 @@ import { signInWithOAuth } from '@/utils/auth-helpers/client';
 import { type Provider } from '@supabase/supabase-js';
 import { FcGoogle } from "react-icons/fc";
 import { useState } from 'react';
+import { Input } from '../ui/input';
 
 type OAuthProviders = {
   name: Provider;
@@ -37,7 +38,7 @@ export default function OauthSignIn() {
           className="pb-2"
           onSubmit={(e) => handleSubmit(e)}
         >
-          <input type="hidden" name="provider" value={provider.name} />
+          <Input type="hidden" name="provider" value={provider.name} />
           <Button
             variant="outline"
             type="submit"

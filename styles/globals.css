@@ -4,27 +4,27 @@
 @tailwind utilities;
 
 :root {
-  --radius: 8px;
-  --chart: #0F172A; 
-    --background: 0 0% 100%;
-  --foreground: white; 
+  --radius: 10px;
+  --chart: #0F172A;
+  --background: 0 0% 100%;
+  --foreground: 240, 10%, 4%;
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
-  --card: white;
-  --card-foreground: white;
-  --popover: white;
-  --popover-foreground: white;
+  --card: 0, 0%, 100%;
+  --card-foreground: 0, 0%, 100%;
+  --popover: 0, 0%, 100%;
+  --popover-foreground: 0, 0%, 100%;
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --primary: 240 10% 4% ;
+  --primary: 240 10% 4%;
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
-  --secondary-foreground: white;
+  --secondary-foreground: 240, 10%, 4%;
   --accent: 210 40% 96.1%;
-  --accent-foreground: white;
+  --accent-foreground: 240, 10%, 4%;
   --destructive: 0 100% 50%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 0 0% 0%; 
+  --ring: transparent;
   --chart-1: #52525b;
   --chart-2: #D4D4D8;
   --chart-3: #030712;
@@ -32,19 +32,19 @@
   --chart-5: #a1a1aa;
 }
 
-.dark { 
+:root.dark {
   --background: 240 10% 4%;
-  --foreground: white;
-  --chart: white;
+  --foreground: 0, 0%, 100%;
+  --chart: 0, 0%, 100%;
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
-  --card: 240 10% 4%; 
+  --card: 240 10% 4%;
   --card-foreground: 0 0% 100%;
   --popover: 240 10% 4%;
   --popover-foreground: 0 0% 100%;
   --border: 240 4% 16%;
   --input: 240 4% 16%;
-  --primary: 0  0%  100%;
+  --primary: 0 0% 100%;
   --primary-foreground: 240 10% 4%;
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 222.2 47.4% 11.2%;
@@ -53,7 +53,7 @@
   --destructive: 0 100% 50%;
   --destructive-foreground: 210 40% 98%;
   --ring: 0 0% 0%;
-  --chart-1: white;
+  --chart-1: #ffffff;
   --chart-2: #71717A;
   --chart-3: #030712;
   --chart-4: #71717a;
@@ -68,6 +68,27 @@ html {
   scroll-behavior: smooth;
   font-family: 'Inter', sans-serif;
   color-scheme: unset !important;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  color: hsl(var(--foreground));
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
 }
 
 option {

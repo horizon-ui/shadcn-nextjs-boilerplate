@@ -5,6 +5,7 @@ import { updatePassword } from '@/utils/auth-helpers/server';
 import { handleRequest } from '@/utils/auth-helpers/client';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { Input } from '../ui/input';
 
 interface UpdatePasswordProps {
   redirectMethod: string;
@@ -34,8 +35,8 @@ export default function UpdatePassword({
             <label className="text-zinc-950 dark:text-white" htmlFor="password">
               New Password
             </label>
-            <input
-              className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
+            <Input
+              className="mr-2.5 mb-2 h-full min-h-[44px] w-full px-4 py-3 focus:outline-0 dark:placeholder:text-zinc-400"
               id="password"
               placeholder="Password"
               type="password"
@@ -48,8 +49,8 @@ export default function UpdatePassword({
             >
               Confirm New Password
             </label>
-            <input
-              className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
+            <Input
+              className="mr-2.5 mb-2 h-full min-h-[44px] w-full px-4 py-3 focus:outline-0 dark:placeholder:text-zinc-400"
               id="passwordConfirm"
               placeholder="Password"
               type="password"

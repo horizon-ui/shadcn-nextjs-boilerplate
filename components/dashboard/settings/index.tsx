@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { createClient } from '@/utils/supabase/client';
 import { getURL, getStatusRedirect } from '@/utils/helpers';
 import Notifications from './components/notification-settings';
+import { Input } from '@/components/ui/input';
 
 interface Props {
   user: User | null | undefined;
@@ -146,13 +147,13 @@ export default function Settings(props: Props) {
                 id="nameForm"
                 onSubmit={(e) => handleSubmitName(e)}
               >
-                <input
+                <Input
                   type="text"
                   name="fullName"
                   // defaultValue={props.user?.user_metadata.full_name ?? ''}
                   defaultValue={props.userDetails?.full_name ?? ''}
                   placeholder="Please enter your full name"
-                  className={`mb-2 mr-4 flex h-full w-full items-center justify-center rounded-lg border border-zinc-200 bg-white/0 px-4 py-4 text-zinc-950 outline-none dark:!border-white/10 dark:text-white md:mb-0`}
+                  className={`mb-2 mr-4 flex h-full w-full px-4 py-4 outline-none md:mb-0`}
                 />
               </form>
               <Button
@@ -187,12 +188,12 @@ export default function Settings(props: Props) {
                 id="emailForm"
                 onSubmit={(e) => handleSubmitEmail(e)}
               >
-                <input
+                <Input
                   placeholder="Please enter your email"
                   defaultValue={props.user.email ?? ''}
                   type="text"
                   name="newEmail"
-                  className={`mr-4 flex h-full max-w-full w-full items-center justify-center rounded-lg border border-zinc-200 bg-white/0 px-4 py-4 text-zinc-950 outline-none dark:!border-white/10 dark:text-white`}
+                  className={`mr-4 flex h-full max-w-full w-full items-center justify-center px-4 py-4 outline-none`}
                 />
               </form>
               <Button

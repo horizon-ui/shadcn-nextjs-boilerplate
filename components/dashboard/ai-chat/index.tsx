@@ -17,6 +17,7 @@ import { User } from '@supabase/supabase-js';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
 import { HiUser, HiSparkles, HiMiniPencilSquare } from 'react-icons/hi2';
+import { Input } from '@/components/ui/input';
 
 interface Props {
   user: User | null | undefined;
@@ -218,8 +219,8 @@ export default function Chat(props: Props) {
           </div>
           {/* Chat Input */}
           <div className="mt-5 flex justify-end">
-            <input
-              className="mr-2.5 h-full min-h-[54px] w-full rounded-lg border border-zinc-200 bg-white px-5 py-5 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
+            <Input
+              className="mr-2.5 h-full min-h-[54px] w-full px-5 py-5 focus:outline-0 dark:border-zinc-800 dark:placeholder:text-zinc-400"
               placeholder="Type your message here..."
               onChange={handleChange}
             />
