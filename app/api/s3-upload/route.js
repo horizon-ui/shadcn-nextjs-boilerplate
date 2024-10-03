@@ -11,7 +11,7 @@ const s3Client = new S3Client({
 });
 
 const openai = new OpenAI({
-  apiKey: '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',
+  apiKey:  process.env.NEXT_PUBLIC_OPENAI_API_KEY,
 });
 
 // -------------- OpenAI API call to get audio --------------
