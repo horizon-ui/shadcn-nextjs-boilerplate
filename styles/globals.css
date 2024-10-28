@@ -16,7 +16,8 @@
   --popover-foreground: 0, 0%, 100%;
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --primary: 240 10% 4%;
+  --primary: 140 30% 55%; 
+  /* ^ this is green */
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 240, 10%, 4%;
