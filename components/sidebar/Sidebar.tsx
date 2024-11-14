@@ -37,12 +37,12 @@ function Sidebar(props: SidebarProps) {
   // SIDEBAR
   return (
     <div
-      className={`lg:!z-99 fixed !z-[99] min-h-full w-[300px] transition-all md:!z-[99] xl:!z-0 ${
-        props.variant === 'auth' ? 'xl:hidden' : 'xl:block'
+      className={`lg:!z-99 fixed !z-[99] min-h-full w-[300px] justify-end items-start flex transition-all md:!z-[99] xl:!z-0 ${
+        props.variant === 'auth' ? 'xl:hidden' : 'xl:flex'
       } ${props.open ? '' : '-translate-x-[120%] xl:translate-x-[unset]'}`}
     >
       <Card
-        className={`m-3 ml-3 h-[96.5vh] w-full overflow-hidden !rounded-lg border-zinc-200 pe-4 dark:border-zinc-800 sm:my-4 sm:mr-4 md:m-5 md:mr-[-50px]`}
+        className={`h-[calc(100vh_-_110px)] w-full overflow-hidden !rounded-lg border-zinc-200 dark:border-zinc-800 mt-[100px] mx-3`}
       >
         <Scrollbars
           autoHide
