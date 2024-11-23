@@ -73,28 +73,29 @@ const Announcement = ({ date }) => {
       w="100%"
       zIndex="10"
       h={{ base: "90px", lg: "90px" }}
+      display={{base:"none", md:"flex"}}
     >
       <Flex
         px={{
           base: "0px",
           xl: "unset",
         }}
-        bg="radial-gradient(127.15% 100% at 47.42% 0%, #B4B0FE 0%, #363285 22.92%, #110D5B 42.71%, #050327 88.54%)"
+        bg="black"
         w="100%"
         bgPosition="center"
-        h={{ base: "90px", lg: "90px" }}
+        h={{ base: "70px", lg: "70px" }}
         bgSize="cover"
-        justify={"center"}
+        justify={"center"} 
         items="center"
       >
-        <Image
+        {/* <Image
           src={logobfsmall.src}
           me={{ lg: "10px", xl: "45px" }}
           w={{ base: "138px", lg: "138px" }}
           h={{ base: "65px", lg: "65px" }}
           my="auto"
-        />
-        <SimpleGrid
+        /> */}
+        {/* <SimpleGrid
           display={{ base: "none", md: "flex" }}
           maxW="max-content"
           columns={{ base: "2", md: "4" }}
@@ -219,14 +220,15 @@ const Announcement = ({ date }) => {
               SECONDS
             </Text>
           </Flex>
-        </SimpleGrid>
-        <Image
+        </SimpleGrid> */}
+        {/* <Image
           display={{ base: "none", md: "flex" }}
           src={priceribbon.src}
           w={{ base: "120px", lg: "120px" }}
           mt="-3px"
           me={{ base: "0px", lg: "40px" }}
-        /> 
+        />  */}
+        <Text my="auto" fontWeight={"bold"} color="white" me="10px">Black Friday Offer has Arrived - Save up to 55% on all products!</Text>
           <Button
             border="0.6px solid"
             borderColor="rgba(255, 255, 255, 0.25)"
