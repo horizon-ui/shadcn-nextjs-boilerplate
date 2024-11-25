@@ -34,7 +34,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
           {/* @ts-ignore */}
           <ChakraProvider>
             <div className="dark:bg-background-900 flex h-full w-full bg-white">
-              <Announcement date="24 november 2024" />
+              <Announcement date="02 december 2024" />
               <Toaster />
               <Sidebar routes={routes} setOpen={setOpen} />
               <div className="h-full w-full dark:bg-zinc-950">

@@ -68,7 +68,7 @@ const Announcement = ({ date }) => {
   return (
     <Link
       isExternal
-      href="https://horizon-ui.com/campaign"
+      href="https://horizon-ui.com/campaign#bundle"
       position="fixed"
       w="100%"
       zIndex="10"
