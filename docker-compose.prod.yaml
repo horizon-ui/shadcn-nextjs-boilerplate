@@ -1,0 +1,54 @@
+networks:
+  hs-room:
+    driver: bridge
+
+services:
+  hs-room-backend-api:
+    image: hs-room-backend-api
+    container_name: hs-room-backend-api
+    restart: always
+    build:
+      context: ./backend/api
+    env_file: ./.env
+    ports:
+      - 4000:4000
+    networks:
+      - hs-room
+
+    depends_on:
+      - postgres
+
+    healthcheck:
+      test:
+        ["CMD", "curl", "-f", "http://host.docker.internal:4000/healthcheck"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+
+  hs-room-frontend-home:
+    container_name: hs-room-frontend-home
+    build:
+      context: ./frontend/home
+      dockerfile: Dockerfile
+
+    ports:
+      - 3000:3000
+    networks:
+      - hs-room
+    env_file:
+      - ./.env
+    depends_on:
+      - hs-room-backend-api
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+    ports:
+      - 5432:5432
+    networks:
+      - hs-room

@@ -1,0 +1,82 @@
+name: Build and Push Docker Compose Images
+
+on:
+  push:
+    tags:
+      - "*.*.*-p"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [frontend, backend] # Define frontend and backend as matrix jobs
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_TOKEN }}
+
+      - name: Build and Push Service Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./${{ matrix.service }}/
+          file: ./${{ matrix.service }}/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/hs-booking-platform-${{ matrix.service }}:${{ github.ref_name }}
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref:
+            develop
+            # Fetch full history to ensure no issues with permissions
+          fetch-depth: 0
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_TOKEN }}
+
+      - name: Update docker-compose.prod.yaml with Specific Tag Backend
+        run: |
+          sed -i "s|image: ghcr.io/${{ github.repository_owner }}/hs-booking-platform-backend.*:.*|image: ghcr.io/${{ github.repository_owner }}/hs-booking-platform-backend:${{ github.ref_name }}|" docker-compose.prod.yaml
+
+      - name: Update docker-compose.prod.yaml with Specific Tag Frontend
+        run: |
+          sed -i "s|image: ghcr.io/${{ github.repository_owner }}/hs-booking-platform-frontend.*:.*|image: ghcr.io/${{ github.repository_owner }}/hs-booking-platform-frontend:${{ github.ref_name }}|" docker-compose.prod.yaml
+
+      - name: Conditional Container Down
+        run: |
+          if docker compose -f docker-compose.prod.yaml ps | grep -q "Up"; then
+            echo "Stopping existing containers..."
+            docker compose -f docker-compose.prod.yaml down
+            
+            # Wait until all containers are down
+            echo "Waiting for containers to fully stop..."
+            while docker compose -f docker-compose.prod.yaml ps | grep -q "Up"; do
+              echo "Containers are still shutting down. Waiting..."
+              sleep 5
+            done
+            echo "All containers have stopped."
+          else
+            echo "No containers running; skipping down step."
+          fi
+
+      - name: Pull Image
+        run: docker compose -f docker-compose.prod.yaml pull
+
+      - name: Deploy Container
+        run: docker compose -f docker-compose.prod.yaml up -d --remove-orphans

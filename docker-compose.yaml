@@ -1,0 +1,50 @@
+networks:
+  zoomthai:
+    driver: bridge
+
+services:
+
+  
+  hs-room-backend-api:
+    image: hs-room-backend-api
+    container_name: hs-room-backend-api
+    restart: always
+    build:
+      context: ./backend/api
+    env_file: ./.env
+    ports:
+      - 4000:4000
+    networks:
+      - zoomthai
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://host.docker.internal:4000/healthcheck"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+
+  hs-room-frontend-home:
+    container_name: hs-room-frontend-home
+    build:
+      context: ./frontend/home
+      dockerfile: Dockerfile
+      
+    ports:
+      - 3000:3000
+    networks:
+      - zoomthai
+    env_file:
+      - ./.env
+
+  https:
+    image: caddy
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - URL_BACKEND=https://api.hs-reserve-dev.com
+      - URL_FRONTEND=https://hs-reserve-dev.com
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+    - zoomthai
