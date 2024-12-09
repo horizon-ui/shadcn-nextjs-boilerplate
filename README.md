@@ -4,7 +4,7 @@
     <img src="https://i.ibb.co/DGSsjWL/top-boilerplate-shadcn-readme.png" alt="Horizon AI Boilerplate Admin Dashboard NextJS Shadcn UI" width="300px" max-width="400px">
   </a>
 </p>
-
+ 
 <p align="center">
     <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/boilerplate-shadcn">Website</a> •
     <a style="color: #09090B; text-decoration: underline;" target="_blank" href="https://horizon-ui.com/docs-boilerplate/shadcn-components/auth-UI">Documentation</a> •
