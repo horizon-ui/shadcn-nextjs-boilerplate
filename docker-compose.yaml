@@ -1,5 +1,5 @@
 networks:
-  zoomthai:
+  hs-room:
     driver: bridge
 
 services:
@@ -15,7 +15,7 @@ services:
     ports:
       - 4000:4000
     networks:
-      - zoomthai
+      - hs-room
 
     healthcheck:
       test: ["CMD", "curl", "-f", "http://host.docker.internal:4000/healthcheck"]
@@ -32,19 +32,8 @@ services:
     ports:
       - 3000:3000
     networks:
-      - zoomthai
+      - hs-room
     env_file:
       - ./.env
 
-  https:
-    image: caddy
-    ports:
-      - 80:80
-      - 443:443
-    environment:
-      - URL_BACKEND=https://api.hs-reserve-dev.com
-      - URL_FRONTEND=https://hs-reserve-dev.com
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-    networks:
-    - zoomthai
+  

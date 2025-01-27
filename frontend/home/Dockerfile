@@ -1,72 +1,54 @@
-FROM node:20-alpine AS base
-
-# Install dependencies only when needed
-FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
-WORKDIR /app
-
-# Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN \
-    if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-    elif [ -f package-lock.json ]; then npm ci; \
-    elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
-    else echo "Lockfile not found." && exit 1; \
-    fi
+# Stage 1: Build Stage
+FROM node:22.3.0
 
 
-# Rebuild the source code only when needed
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+
+ARG NEXT_PUBLIC_SUPABASE_URL=https://tzomxomgglrywbsulrtm.supabase.co
+ARG NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6b214b21nZ2xyeXdic3VscnRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc5NjU4MDEsImV4cCI6MjA1MzU0MTgwMX0.TuBxVKwK1uE8XqzL9nnkoswZD_Yd23eZ9CHM2xZFzC8
+ARG NEXT_PUBLIC_OPENAI_API_KEY=sk-************************************************ 
+ARG NEXT_PUBLIC_OPENAI_ASSISTANT_KEY=asst_************************
+
+# Update these with your Supabase details from your project settings > API 
+ARG  SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6b214b21nZ2xyeXdic3VscnRtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczNzk2NTgwMSwiZXhwIjoyMDUzNTQxODAxfQ.3Q25ffr10x8VMVQT7TitqygwhmtJBXLeobnp_WeNb_o
+ 
+# Update these with your Stripe credentials from https://dashboard.stripe.com/apikeys
+ # NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_***************************************************************************************************
+ARG NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_***************************************************************************************************
+# STRIPE_SECRET_KEY=sk_live_*************************************************************************************************** 
+ARG STRIPE_SECRET_KEY=sk_test_*************************************************************************************************** 
+# The commented variable is usually for production webhook key. This you get in the Stripe dashboard and is usually shorter.
+ # STRIPE_WEBHOOK_SECRET=whsec_********************************
+ARG STRIPE_WEBHOOK_SECRET=whsec_****************************************************************
+
+# # Update this with your stable site URL only for the production environment.
+# ARG # NEXT_PUBLIC_SITE_URL=https://horizon-ui.com/shadcn-nextjs-boilerplate
+# ARG # NEXT_PUBLIC_SITE_URL=https://******************.com
+
+ARG NEXT_PUBLIC_AWS_S3_REGION=eu-north-1 
+ARG NEXT_PUBLIC_AWS_S3_ACCESS_KEY_ID=******************** 
+ARG NEXT_PUBLIC_AWS_S3_SECRET_ACCESS_KEY=**************************************** 
+ARG NEXT_PUBLIC_AWS_S3_BUCKET_NAME=mybucket
+
+# Install required dependencies for build tools
+RUN apt-get update && apt-get install -y libvips-dev
+
+# Set working directory in container
+WORKDIR /usr/src/app
+
+# Copy package.json and yarn.lock to leverage Docker cache
+COPY package.json ./
+
+# Install dependencies using Yarn
+RUN yarn install --force
+
+# Copy the rest of the application source code
 COPY . .
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry during the build.
-
-ENV NEXT_TELEMETRY_DISABLED 1
-
-
+# Build Next.js app
 RUN yarn build
 
-# If using npm comment out above and use below instead
-# RUN npm run build
-
-# Production image, copy all the files and run next
-FROM base AS runner
-WORKDIR /app
-
-ENV NODE_ENV production
-# Uncomment the following line in case you want to disable telemetry during runtime.
-
-ENV NEXT_TELEMETRY_DISABLED 1
-
-
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder /app/public ./public
-
-# Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
-
+# Expose ports for both the app and Storybook (optional in production)
 EXPOSE 3000
 
-ENV PORT 3000
-# set hostname to localhost
-ENV HOSTNAME "0.0.0.0"
-
-# server.js is created by next build from the standalone output
-# https://nextjs.org/docs/pages/api-reference/next-config-js/output
-CMD ["node", "server.js"]
+# Start the Next.js app
+CMD ["yarn", "start"]

@@ -1,0 +1,12 @@
+node_modules
+.next
+.vscode
+build
+.env
+.env.example
+Dockerfile
+node_modules
+.git
+.next
+storybook-static
+*.log
