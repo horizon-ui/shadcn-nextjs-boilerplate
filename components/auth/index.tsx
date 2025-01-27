@@ -3,7 +3,7 @@
 import { Button } from '../ui/button';
 import Footer from '@/components/footer/FooterAuthDefault';
 import { useTheme } from 'next-themes';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { FaChevronLeft } from 'react-icons/fa6';
 import { HiBolt } from 'react-icons/hi2';
 import { IoMoon, IoSunny } from 'react-icons/io5';
@@ -15,7 +15,15 @@ interface DefaultAuthLayoutProps extends PropsWithChildren {
 
 export default function DefaultAuthLayout(props: DefaultAuthLayoutProps) {
   const { children } = props;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const { theme, setTheme } = useTheme();
+  if (!mounted) {
+    return null;
+  }
   return (
     <div className="relative h-max dark:bg-zinc-950">
       <div className="mx-auto flex w-full flex-col justify-center px-5 pt-0 md:h-[unset] md:max-w-[66%] lg:h-[100vh] lg:max-w-[66%] lg:px-6 xl:pl-0 ">

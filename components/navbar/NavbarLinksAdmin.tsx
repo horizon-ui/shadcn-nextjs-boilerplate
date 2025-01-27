@@ -11,7 +11,7 @@ import { OpenContext, UserContext } from '@/contexts/layout';
 import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FiAlignJustify } from 'react-icons/fi';
 import {
   HiOutlineMoon,
@@ -26,17 +26,23 @@ export default function HeaderLinks(props: { [x: string]: any }) {
   const { open, setOpen } = useContext(OpenContext);
   const user = useContext(UserContext);
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const router = getRedirectMethod() === 'client' ? useRouter() : null;
   const onOpen = () => {
     setOpen(false);
   };
+
+  // Ensures this component is rendered only on the client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSignOut = async (e) => {
     e.preventDefault();
     supabase.auth.signOut();
     router.push('/dashboard/signin');
   };
-
+  if (!mounted) return null;
   return (
     <div className="relative flex min-w-max max-w-max flex-grow items-center justify-around gap-1 rounded-lg md:px-2 md:py-2 md:pl-3 xl:gap-2">
       <Button

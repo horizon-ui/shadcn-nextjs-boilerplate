@@ -51,6 +51,7 @@ export default function Settings(props: Props) {
       {props.notifications.map((notification, key) => {
         return (
           <Notification
+            key={key}
             className={key < props.notifications.length - 1 ? 'mb-6' : ''}
             time={notification.time}
             message={notification.message}

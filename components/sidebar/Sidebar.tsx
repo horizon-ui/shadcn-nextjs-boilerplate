@@ -55,6 +55,7 @@ function Sidebar(props: SidebarProps) {
           renderTrackVertical={renderTrack}
           renderThumbVertical={renderThumb}
           renderView={renderView}
+          universal={true}
         >
           <div className="flex h-full flex-col justify-between">
             <div>

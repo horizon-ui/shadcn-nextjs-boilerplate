@@ -1,3 +1,9 @@
+## [3.0.0] 2025-27-01
+
+### Upgraded to React 19 ⚡️
+
+### Upgraded to Next.js 15 ⚡️
+
 ## [2.1.1] 2024-09-10
 
 ### Signout fixed ⚡️

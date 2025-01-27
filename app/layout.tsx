@@ -11,7 +11,7 @@ export default function RootLayout({
   children
 }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <title>
           Horizon UI Boilerplate - Launch your startup project 10X in a few
