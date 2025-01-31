@@ -33,7 +33,7 @@ model Booking {
   userId          Int // Foreign Key referencing User
   email           String // Email of the user booking the room
   durationMinutes Int // Duration of the booking in minutes
-  tokensUsed      Int // Tokens used for this booking
+  creditsUsed      Int // credits used for this booking
   bookingStart    DateTime // Start time of the booking
   bookingEnd      DateTime // End time of the booking
   sessionPasscode String // Session passcode for validation
@@ -55,7 +55,7 @@ model User {
   gradYear    DateTime? // Graduate year (nullable for staff/admin)
   email       String    @unique // User email (unique)
   role        Role // Role of the user
-  credits     Int       @default(6) // Tokens available for booking
+  credits     Int       @default(6) // credits available for booking
   permissions Json      @default("{}") // List of permissions for admin/staff
   isVerified  Boolean   @default(false) // Whether the email is verified
   createdAt   DateTime  @default(now()) // Created timestamp
@@ -71,7 +71,7 @@ model Penalty {
   booking        Booking  @relation(fields: [bookingId], references: [id]) // Foreign Key referencing Booking
   bookingId      Int // Foreign Key referencing Booking
   penaltyReason  String // Reason for the penalty
-  tokensDeducted Int // Number of tokens deducted
+  creditsDeducted Int // Number of credits deducted
   createdAt      DateTime @default(now()) // Created timestamp
 }
 
