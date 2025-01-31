@@ -45,9 +45,9 @@ services:
     container_name: postgres
     restart: always
     environment:
-      POSTGRES_USER:  protgres
-      POSTGRES_PASSWORD: protgres
-      POSTGRES_DB: hs-room
+      POSTGRES_USER:  hs-room
+      POSTGRES_PASSWORD: 9FfQK1prmSSugc9fP
+      POSTGRES_DB: postgres.th-leaguesofcode.com
     ports:
       - 5433:5432
     networks:
