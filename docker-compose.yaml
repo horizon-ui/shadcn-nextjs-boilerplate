@@ -11,11 +11,19 @@ services:
     restart: always
     build:
       context: ./backend/api
+      dockerfile: dev.Dockerfile
     env_file: ./.env
     ports:
       - 4000:4000
     networks:
       - hs-room
+
+    volumes:
+      - ./backend/api:/app
+      - /app/node_modules
+      - /app/dist
+      - ./backend/api/src:/opt/app/src
+      - ./backend/api/package.json:/opt/package.json
 
     healthcheck:
       test: ["CMD", "curl", "-f", "http://host.docker.internal:4000/healthcheck"]
@@ -27,7 +35,7 @@ services:
     container_name: hs-room-frontend-home
     build:
       context: ./frontend/home
-      dockerfile: Dockerfile
+      dockerfile: dev.Dockerfile
       
     ports:
       - 3000:3000
@@ -36,4 +44,9 @@ services:
     env_file:
       - ./.env
 
-  
+    volumes:
+      - ./frontend/home:/app
+      - /app/node_modules
+      - /app/build
+      - ./frontend/home:/opt/app/src
+      - ./frontend/home/package.json:/opt/package.json

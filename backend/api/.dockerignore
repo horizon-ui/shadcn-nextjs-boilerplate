@@ -1,6 +1,8 @@
 node_modules
 .next
 .vscode
+build
+.env
 .env.example
 .git
 .next

@@ -4,10 +4,9 @@ import type { Config } from "tailwindcss"
 const config = {
   darkMode: ["class"],
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    // Or if using `src` directory:
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{ts,tsx,mdx}',
+    './components/**/*.{ts,tsx,mdx}',
+ 
   ],
   prefix: "",
   theme: {
@@ -105,6 +104,13 @@ const config = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
+  			},
+  			chart: {
+  				'1': 'hsl(var(--chart-1))',
+  				'2': 'hsl(var(--chart-2))',
+  				'3': 'hsl(var(--chart-3))',
+  				'4': 'hsl(var(--chart-4))',
+  				'5': 'hsl(var(--chart-5))'
   			}
   		},
   		borderRadius: {
