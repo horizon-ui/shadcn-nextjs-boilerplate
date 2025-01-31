@@ -1,0 +1,124 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Room {
+  id            Int       @id @default(autoincrement()) // Primary Key
+  name          String // Room name
+  capacity      Int // Room capacity
+  isAvailable   Boolean   @default(true) // Whether the room is available
+  nextAvailable DateTime? // When the room will be available next
+  imageUrl      String? // URL for the room image
+  createdAt     DateTime  @default(now()) // Created timestamp
+  updatedAt     DateTime  @updatedAt // Updated timestamp
+  bookings      Booking[] // Relation to Booking
+}
+
+model Booking {
+  id              Int              @id @default(autoincrement()) // Primary Key
+  room            Room             @relation(fields: [roomId], references: [id]) // Foreign Key referencing Room
+  roomId          Int // Foreign Key referencing Room
+  user            User             @relation(fields: [userId], references: [id]) // Foreign Key referencing User
+  userId          Int // Foreign Key referencing User
+  email           String // Email of the user booking the room
+  durationMinutes Int // Duration of the booking in minutes
+  creditsUsed      Int // credits used for this booking
+  bookingStart    DateTime // Start time of the booking
+  bookingEnd      DateTime // End time of the booking
+  sessionPasscode String // Session passcode for validation
+  status          Status // Booking status
+  createdAt       DateTime         @default(now()) // Created timestamp
+  updatedAt       DateTime         @updatedAt // Updated timestamp
+  penalties       Penalty[] // Relation to Penalty
+  history         BookingHistory[] // Relation to BookingHistory
+}
+
+model User {
+  id          Int       @id @default(autoincrement()) // Primary Key
+  name        String // Full name
+  nickname    String? // Nickname (nullable)
+  studentId   String? // Student ID (nullable for non-students)
+  degree      Degree? // Current degree (nullable for staff/admin)
+  program     Program? // Program of study (nullable for staff/admin)
+  entryDate   DateTime? // Entry year (nullable for staff/admin)
+  gradYear    DateTime? // Graduate year (nullable for staff/admin)
+  email       String    @unique // User email (unique)
+  role        Role // Role of the user
+  credits     Int       @default(6) // credits available for booking
+  permissions Json      @default("{}") // List of permissions for admin/staff
+  isVerified  Boolean   @default(false) // Whether the email is verified
+  createdAt   DateTime  @default(now()) // Created timestamp
+  updatedAt   DateTime  @updatedAt // Updated timestamp
+  bookings    Booking[] // Relation to Booking
+  penalties   Penalty[] // Relation to Penalty
+}
+
+model Penalty {
+  id             Int      @id @default(autoincrement()) // Primary Key
+  user           User     @relation(fields: [userId], references: [id]) // Foreign Key referencing User
+  userId         Int // Foreign Key referencing User
+  booking        Booking  @relation(fields: [bookingId], references: [id]) // Foreign Key referencing Booking
+  bookingId      Int // Foreign Key referencing Booking
+  penaltyReason  String // Reason for the penalty
+  creditsDeducted Int // Number of credits deducted
+  createdAt      DateTime @default(now()) // Created timestamp
+}
+
+model BookingHistory {
+  id              Int      @id @default(autoincrement()) // Primary Key
+  booking         Booking  @relation(fields: [bookingId], references: [id]) // Foreign Key referencing Booking
+  bookingId       Int // Foreign Key referencing Booking
+  action          Action // Action taken
+  actionTimestamp DateTime // Timestamp of the action
+  createdAt       DateTime @default(now()) // Created timestamp
+}
+
+// Enums
+enum Degree {
+  Staff
+  Master
+  Bachelor
+}
+
+enum Program {
+  Staff
+  CS
+  DS
+  CYS
+  DM
+  HTE
+  ID
+}
+
+enum Role {
+  Admin
+  Staff
+  Student
+  Visitor
+  Teacher
+}
+
+enum Status {
+  Pending
+  CheckedIn
+  Cancelled
+  NoShow
+}
+
+enum Action {
+  Created
+  CheckedIn
+  Cancelled
+  NoShow
+}

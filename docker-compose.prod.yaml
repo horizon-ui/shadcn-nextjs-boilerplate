@@ -49,6 +49,6 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: hs-room
     ports:
-      - 5432:5432
+      - 5433:5432
     networks:
       - hs-room
