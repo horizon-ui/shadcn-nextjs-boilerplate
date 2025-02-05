@@ -1,5 +1,5 @@
 
-import { headers } from "next/headers"
+import { sub } from "date-fns";
 import type { Config } from "tailwindcss" 
 
 const primitiveColors = {
@@ -37,7 +37,13 @@ const primitiveColors = {
   },
   shadow: {
     500: "#081131"
-  } 
+  },
+  // TODO: edit this name to match with the styles 
+  disabled: {
+	subtle: "#F8F9FC",
+	border_subtle: "#EAECF5",
+	foreground_subtle: "#ACB0CF"
+  }
 }
 
 const hexToRgb = (hex: string) => {
@@ -65,36 +71,12 @@ const config = {
   	container: {
   		center: true,
   		padding: '2rem',
-  		screens: {
-  			sm: '576px',
-  			'sm-max': {
-  				max: '576px'
-  			},
-  			md: '768px',
-  			'md-max': {
-  				max: '768px'
-  			},
-  			lg: '992px',
-  			'lg-max': {
-  				max: '992px'
-  			},
-  			xl: '1200px',
-  			'xl-max': {
-  				max: '1200px'
-  			},
-  			'2xl': '1320px',
-  			'2xl-max': {
-  				max: '1320px'
-  			},
-  			'3xl': '1600px',
-  			'3xl-max': {
-  				max: '1600px'
-  			},
-  			'4xl': '1850px',
-  			'4xl-max': {
-  				max: '1850px'
-  			}
-  		}
+  	},	
+	screens: {
+		'sm': '320px',
+		'md': '768px',
+		'lg': '991px',
+		'xl': '1280px'
   	},
   	extend: {
   		fontFamily: {
@@ -181,10 +163,21 @@ const config = {
         }]
       },
   		colors: {
+			...primitiveColors,
+			text: {
+				white: primitiveColors.white,
+			},
+  			background: {
+				disabled_subtle: primitiveColors.gray[50],
+				primary: {
+					DEFAULT: primitiveColors.primary[500],
+					hover: primitiveColors.primary[600],
+					focus: primitiveColors.primary[500]
+				}
+			},
+  			ring: 'hsl(var(--ring))',
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
@@ -260,7 +253,7 @@ const config = {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		},
-      dropShadow: {
+      	dropShadow: {
         'xs': `0px 1px 2px 0px rgba(${shadowRgb.r}, ${shadowRgb.g}, ${shadowRgb.b}, 0.05)`,
         'sm': `0px 1px 3px 0px rgba(${shadowRgb.r}, ${shadowRgb.g}, ${shadowRgb.b}, 0.1)`,
         'md': `0px 4px 8px -2px rgba(${shadowRgb.r}, ${shadowRgb.g}, ${shadowRgb.b}, 0.1)`,

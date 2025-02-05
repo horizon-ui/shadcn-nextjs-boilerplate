@@ -1,7 +1,7 @@
 
 const buttonConfig = {
     primary: {
-        base: "bg-primary-500 text-white",
+        base: "bg-",
         hover: "hover:bg-primary-600",
         focus: "focus:ring focus:ring-primary-500",
     },
@@ -22,6 +22,6 @@ const sizeConfig = {
 
 export default function Button() {
     return (
-        <button></button>
+        <button className=""></button>
     )
 }
