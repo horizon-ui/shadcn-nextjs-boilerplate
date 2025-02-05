@@ -137,6 +137,7 @@
     "@types/node": "^20.12.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "18.3.0",
+    "@types/storybook__react": "^4.0.2",
     "autoprefixer": "^10.4.19",
     "encoding": "^0.1.13",
     "eslint": "^9.3.0",
