@@ -1,13 +1,50 @@
 
+import { headers } from "next/headers"
 import type { Config } from "tailwindcss" 
+
+const primitiveColors = {
+	gradient : "#F3F2FB",
+	white : "FFFFF",
+	primary:{
+		50: "#F0EFF9",
+		100: "#E1DFF3",
+		300: "#CAC6EB",
+		400: "#938AE5",
+		500: "#685DC5",
+		600: "#4F469C",
+		800: "#3E377A"
+	},
+  gray: {
+    50: "#FAFAFA",
+    100: "#E6E6E6",
+	200: "#C2C2C2",
+    300: "#C4C4C4",
+    400: "#A3A3A3",
+    500: "#535353",
+    900: "#333333"
+  },
+  success: {
+	50: "#DEF5E6",
+	500: "#5ACF81"
+  },
+  error: {
+    50: "#FBDEDD",
+    500: "#EC5857"
+  },
+  warning: {
+    50: "#FBF6DD",
+    500: "#F6DE63"
+  }
+}
 
 const config = {
   darkMode: ["class"],
   content: [
     './app/**/*.{ts,tsx,mdx}',
     './components/**/*.{ts,tsx,mdx}',
- 
+    './stories/**/*.{ts,tsx,mdx}',
   ],
+
   prefix: "",
   theme: {
   	container: {
@@ -53,13 +90,81 @@ const config = {
   			poppins: [
   				'Poppins',
   				'sans-serif'
-  			]
+  			],
+			'apercu-pro':[
+				'Light',
+				'Regular',
+				'Medium',
+				'Bold'
+			]
   		},
   		height: {
   			'300px': '300px',
   			'500px': '500px',
   			sidebar: 'calc(100vh - 32px)'
   		},
+      fontSize: {
+        "display-lg": ['12.5rem', {
+          lineHeight: '1',
+          letterSpacing: 'normal'
+        }],
+        "display-md": ['7.5rem', {
+          lineHeight: '6.5625rem',
+          letterSpacing: '-0.15rem'
+        }],
+        "display-sm": ['3rem', {
+          lineHeight: '3.125rem',
+          letterSpacing: '-0.01875rem'
+        }],
+        "header-xl": ['3rem', {
+          lineHeight: '3.125rem',
+          letterSpacing: '-0.375rem'
+        }],
+        "header-lg": ['2rem', {
+          lineHeight: '2.375rem',
+          letterSpacing: '-0.01875rem'
+        }],
+        "header-md": ['1.625rem', {
+          lineHeight: '2rem',
+          letterSpacing: '-0.01875rem'
+        }],
+        "header-sm": ['1.375rem', {
+          lineHeight: '2rem',
+          letterSpacing: '-0.01875rem'
+        }],
+        "header-xs": ['1rem', {
+          lineHeight: '1.5rem',
+          letterSpacing: '-0.0125rem'
+        }],
+        "text-lg": ['1.625rem', {
+          lineHeight: '2.1875rem',
+          letterSpacing: '-0.01875rem'
+        }],
+        "text-md": ['1.375rem', {
+          lineHeight: '2rem',
+          letterSpacing: '-0.01875rem'
+        }],
+        "text-sm": ['1rem', {
+          lineHeight: '1.5rem',
+          letterSpacing: '-0.0125rem'
+        }],
+        "caption-lg": ['0.75rem', {
+          lineHeight: '1.5rem',
+          letterSpacing: '-0.00625rem'
+        }],
+        'caption-sm': ['0.625rem', {
+          lineHeight:  "1.5rem",
+          letterSpacing: "-0.00625rem"
+        }],
+        'text-btn': ['1.125rem', {
+          lineHeight: '1',
+          letterSpacing: "-0.0125rem"
+        }],
+        'text-tag': ['0.75rem', {
+          lineHeight: '1.5rem',
+          letterSpacing: "-0.00625rem"
+        }]
+      },
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
@@ -139,7 +244,10 @@ const config = {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
+  		},
+      dropShadow: {
+        'btn': '0px 0px 0px 4px rgba(51, 84, 255, 0.24)',
+      }
   	}
   },
   plugins: [require('tailwindcss-rtl'), require('tailwindcss-animate')],
