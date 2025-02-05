@@ -34,8 +34,23 @@ const primitiveColors = {
   warning: {
     50: "#FBF6DD",
     500: "#F6DE63"
-  }
+  },
+  shadow: {
+    500: "#081131"
+  } 
 }
+
+const hexToRgb = (hex: string) => {
+  hex = hex.replace(/^#/, '');
+  const bigint = parseInt(hex, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return { r, g, b };
+};
+
+const shadowRgb = hexToRgb(primitiveColors.shadow[500])
+
 
 const config = {
   darkMode: ["class"],
@@ -246,7 +261,17 @@ const config = {
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		},
       dropShadow: {
-        'btn': '0px 0px 0px 4px rgba(51, 84, 255, 0.24)',
+        'xs': `0px 1px 2px 0px rgba(${shadowRgb.r}, ${shadowRgb.g}, ${shadowRgb.b}, 0.05)`,
+        'sm': `0px 1px 3px 0px rgba(${shadowRgb.r}, ${shadowRgb.g}, ${shadowRgb.b}, 0.1)`,
+        'md': `0px 4px 8px -2px rgba(${shadowRgb.r}, ${shadowRgb.g}, ${shadowRgb.b}, 0.1)`,
+        'lg': `0px 12px 16px -4px rgba(${shadowRgb.r}, ${shadowRgb.g}, ${shadowRgb.b}, 0.08)`,
+        '2xl': `0px 24px 48px -12px rgba(${shadowRgb.r}, ${shadowRgb.g}, ${shadowRgb.b}, 0.18)`,
+        '3xl': `0px 32px 64px -12px rgba(${shadowRgb.r}, ${shadowRgb.g}, ${shadowRgb.b}, 0.14)`,
+        
+        'btn-focus': [
+          '0px 0px 0px 4px rgba(51, 84, 255, 0.24)', 
+          '0px 1px 2px 0px rgba(8, 17, 49, 0.05);'
+        ],
       }
   	}
   },
